@@ -56,6 +56,10 @@ class Product(models.Model):
         related_name="products",
         on_delete = models.CASCADE
     )
+    price = models.DecimalField(
+        max_digits = 7,
+        decimal_places = 2
+    )
 
     def save(self, *args, **kwargs):
         if not self.link:
