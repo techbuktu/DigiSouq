@@ -3,7 +3,7 @@ from rest_framework.response import Response
 from rest_framework import generics 
 from rest_framework.reverse import reverse 
 
-import django.contrib.auth.models import User 
+from django.contrib.auth.models import User 
 #Import the Market app's models and API Serializers
 from market.models import (Seller, Buyer, Product, Bid)
 from market.api.serializers import (
@@ -77,7 +77,7 @@ class SellerDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = []
     permission_classes = []
 
-class BuyerListView():
+class BuyerListView(generics.ListCreateAPIView):
     """
     Makes GET (all) and POST requests against the Buyer API endpoint
     """
