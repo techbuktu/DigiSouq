@@ -4,7 +4,7 @@ class Buyer extends Component {
     render() {
         return (
             <div>
-                
+                Buyer landing page.
             </div>
         )
     }

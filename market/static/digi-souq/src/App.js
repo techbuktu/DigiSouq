@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import logo from './logo.svg';
 //import './App.css';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Header from './components/layout/Header';
@@ -11,14 +10,15 @@ import UserSignIn from './components/auth/UserSignIn';
 //Import buyer-related components
 import BidView from './components/buyers/BidView';
 import ProductList from './components/buyers/ProductList';
+import Buyer from './components/buyers/Buyer';
 
 //Import all seller-side components
+import SellerHome from './components/sellers/SellerHome';
 import BidBoard from './components/sellers/BidBoard';
 import Inventory from './components/sellers/Inventory';
 import NewProduct from './components/sellers/NewProduct';
 import ProductDetail from './components/sellers/ProductDetail';
 import UpdateProduct from './components/sellers/UpdateProduct';
-
 
 
 class App extends Component {
@@ -37,6 +37,19 @@ class App extends Component {
               <Route path="/auth/signin" component={UserSignIn}/>
               
               <Route path="/buyer/:buyerLink" component={Buyer}/>
+              <Route path="buyer/:buyerLink/bids" component={BidView}/>
+
+              <Route exact path="/sellers" component={ SellerHome }/>
+              <Route path="/sellers/bidboard" component={BidBoard} />
+              <Route path="/sellers/inventory" component={Inventory} />
+
+              <Route path="products/list/" component={ProductList}/>
+              <Route path="/products/:productLink" component={ProductDetail} />
+              <Route path="/products/new-product" component={NewProduct} />
+              <Route path="/products/update/:productLink" component={UpdateProduct} />
+
+              
+              
 
         </div>
       </Router>
