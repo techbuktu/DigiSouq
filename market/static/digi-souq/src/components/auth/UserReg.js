@@ -12,9 +12,11 @@ class UserReg extends Component {
             }
         }
     }
+
     register = ()=>{
         console.log("Form submitted");
     }
+    
     render() {
         return (
             <div>
