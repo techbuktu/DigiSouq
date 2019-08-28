@@ -5,7 +5,7 @@ class UpdateProduct extends Component {
     render() {
         return (
             <div>
-                
+                Update the details of a Product
             </div>
         )
     }

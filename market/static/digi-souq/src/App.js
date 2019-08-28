@@ -40,7 +40,7 @@ class App extends Component {
               <Route exact path="/buyers/:buyerLink" component={BuyerHome} />
               <Route path="/buyers/:buyerLink/bids" component={BidView} />
               <Route exact path="/products/" component={ProductList}/>
-              <Route path="/products/:productLink" component={ ProductBid }/>
+              <Route exact path="/products/:productLink" component={ ProductBid }/>
 
               <Route exact path="/sellers/:sellerLink" component={ SellerHome }/>
               <Route path="/sellers/:sellerLink/bidboard" component={BidBoard} />
@@ -48,13 +48,9 @@ class App extends Component {
               
               <Route exact path="/sellers/:sellerLink/inventory" component={Inventory} />
               <Route path="/sellers/:sellerLink/inventory/new" component={NewProduct} />
-              <Route path="/sellers/:sellerLink/:productLink" component={ProductDetail} />
+              <Route exact path="/sellers/:sellerLink/:productLink" component={ProductDetail} />
+              <Route path="/sellers/:sellerLink/:productLink/update" component={UpdateProduct} />
               
-
-              <Route path="/products/update/:productLink" component={UpdateProduct} />
-              
-              
-
         </div>
       </Router>
     );
