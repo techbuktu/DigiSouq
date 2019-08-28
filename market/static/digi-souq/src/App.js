@@ -8,9 +8,10 @@ import UserReg from './components/auth/UserReg';
 import UserSignIn from './components/auth/UserSignIn';
 
 //Import buyer-related components
+import BuyerHome from './components/buyers/BuyerHome';
 import BidView from './components/buyers/BidView';
 import ProductList from './components/buyers/ProductList';
-import BuyerHome from './components/buyers/BuyerHome';
+import ProductBid from './components/buyers/ProductBid';
 
 //Import all seller-side components
 import SellerHome from './components/sellers/SellerHome';
@@ -33,19 +34,23 @@ class App extends Component {
                 <Home />
               )}/>
 
-              <Route path="/auth/user-reg" component={UserReg}/>
+              <Route path="/auth/register" component={UserReg}/>
               <Route path="/auth/signin" component={UserSignIn}/>
               
-              <Route path="/buyer/:buyerLink" component={BuyerHome} />
-              <Route path="buyer/:buyerLink/bids" component={BidView} />
+              <Route exact path="/buyers/:buyerLink" component={BuyerHome} />
+              <Route path="/buyers/:buyerLink/bids" component={BidView} />
+              <Route exact path="/products/" component={ProductList}/>
+              <Route path="/products/:productLink" component={ ProductBid }/>
 
-              <Route exact path="/sellers" component={ SellerHome }/>
-              <Route path="/sellers/bidboard" component={BidBoard} />
-              <Route path="/sellers/inventory" component={Inventory} />
+              <Route exact path="/sellers/:sellerLink" component={ SellerHome }/>
+              <Route path="/sellers/:sellerLink/bidboard" component={BidBoard} />
 
-              <Route path="products/list/" component={ProductList}/>
-              <Route path="/products/:productLink" component={ProductDetail} />
-              <Route path="/products/new-product" component={NewProduct} />
+              
+              <Route exact path="/sellers/:sellerLink/inventory" component={Inventory} />
+              <Route path="/sellers/:sellerLink/inventory/new" component={NewProduct} />
+              <Route path="/sellers/:sellerLink/:productLink" component={ProductDetail} />
+              
+
               <Route path="/products/update/:productLink" component={UpdateProduct} />
               
               

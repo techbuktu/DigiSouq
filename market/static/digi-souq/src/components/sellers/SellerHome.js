@@ -4,7 +4,7 @@ class SellerHome extends Component {
     render() {
         return (
             <div>
-                
+                Seller Home
             </div>
         )
     }

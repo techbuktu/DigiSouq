@@ -5,7 +5,7 @@ class ProductDetail extends Component {
     render() {
         return (
             <div>
-                
+                Deatils about a Product in this Seller's Inventory.
             </div>
         )
     }

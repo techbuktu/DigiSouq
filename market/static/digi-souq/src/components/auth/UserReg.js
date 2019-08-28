@@ -5,7 +5,10 @@ class UserReg extends Component {
     render() {
         return (
             <div>
-                
+                User Registration 
+                <form>
+                    
+                </form>
             </div>
         )
     }

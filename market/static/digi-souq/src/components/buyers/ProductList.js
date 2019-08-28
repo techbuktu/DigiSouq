@@ -5,7 +5,7 @@ class ProductList extends Component {
     render() {
         return (
             <div>
-                
+                List of Products for Buyer to view and bid on.
             </div>
         )
     }

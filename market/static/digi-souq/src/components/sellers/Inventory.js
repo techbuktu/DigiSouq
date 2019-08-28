@@ -5,7 +5,7 @@ class Inventory extends Component {
     render() {
         return (
             <div>
-                
+                Inventory of Products by this Seller
             </div>
         )
     }

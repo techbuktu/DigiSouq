@@ -5,7 +5,10 @@ class UserSignIn extends Component {
     render() {
         return (
             <div>
-                
+                Sign in to Your DigiSouq account.
+                <form>
+                    
+                </form>
             </div>
         )
     }
