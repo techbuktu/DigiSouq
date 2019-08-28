@@ -34,3 +34,103 @@ def digisouq_api_root(request, format=None):
         'bids': reverse('market_api:bid_list', request=request, format=format)
     })
 
+
+class UserListView(generics.ListCreateAPIView):
+    """
+    Performs GET (all) and POST requests against the User API endpoint.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = "pk"
+    authentication_classes = []
+    permission_classes = []
+
+class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Performs GET (one), PUT and DELETE operations on the User API.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = "pk"
+    authentication_classes = []
+    permission_classes = []
+
+class SellerListView(generics.ListCreateAPIView):
+    """
+    Performs GET (all) and POST actions on the SellerSerializer.
+    """
+    queryset = Seller.objects.all()
+    serializer_class = SellerSerializer
+    lookup_field = "link"
+    authentication_classes = []
+    permission_classes = []
+
+class SellerDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Makes GET (one), PUT and DELETE requests against the Seller API.
+    """
+    queryset = Seller.objects.all()
+    serializer_class = SellerSerializer
+    lookup_field = "link"
+    authentication_classes = []
+    permission_classes = []
+
+class BuyerListView():
+    """
+    Makes GET (all) and POST requests against the Buyer API endpoint
+    """
+    queryset = Buyer.objects.all()
+    serializer_class = BuyerSerializer
+    lookup_field = "link"
+    authentication_classes = []
+    permission_classes = []
+
+class BuyerDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Makes GET, PUT and DELETE requests a single Buyer API endpoint
+    """
+    queryset = Buyer.objects.all()
+    serializer_class = BuyerSerializer
+    lookup_field = "link"
+    authentication_classes = []
+    permission_classes = []
+
+class ProductListView(generics.ListCreateAPIView):
+    """
+    Performs GET (all) and POST requests actions on the Product API endpoint.
+    """
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    lookup_field = "link"
+    authentication_classes = []
+    permission_classes = []
+
+class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Performs GET, PUT and DELETE requests against a single Product API endpoint
+    """
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    lookup_field = "link"
+    authentication_classes = []
+    permission_classes = []
+
+class BidListView(generics.ListCreateAPIView):
+    """
+    Makes GET (all) and POST requests against the root Bid API.
+    """
+    queryset = Bid.objects.all()
+    serializer_class = BidSerializer
+    lookup_field = "pk"
+    authentication_classes = []
+    permission_classes = []
+
+class BidDetailView(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Makes GET, PUT and DELETE requests against a single Bid API endpoint.
+    """
+    queryset = Bid.objects.all()
+    serializer_class = BidSerializer
+    lookup_field = "pk"
+    authentication_classes = []
+    permission_classes = []
