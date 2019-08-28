@@ -20,6 +20,8 @@ from rest_framework.permissions import (
     IsAuthenticated, IsAuthenticatedOrReadOnly, DjangoModelPermissions
 )
 
+from rest_framework import filters
+
 
 @api_view(['GET'])
 def digisouq_api_root(request, format=None):
