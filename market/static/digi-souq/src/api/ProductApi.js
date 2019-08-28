@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 class ProductApi {
-    constructor()
+    constructor(){}
 }
 
 export default ProductApi;

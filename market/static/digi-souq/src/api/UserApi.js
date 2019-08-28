@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 class UserApi {
-    constructor()
+    constructor(){}
+    
 }
 
 
