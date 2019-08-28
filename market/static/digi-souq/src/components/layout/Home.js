@@ -4,7 +4,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                Home Component
+                Home Component. Intro and links to other sections/components of app.
             </div>
         )
     }

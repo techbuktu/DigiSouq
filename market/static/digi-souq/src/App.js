@@ -26,12 +26,19 @@ class App extends Component {
     return (
       <Router>
           <div className="App">
-          <header className="App-header">
-            <Header />
-          </header>
-        </div>
-        <Home />
+              <header className="App-header">
+                <Header />
+              </header>
+              <Route exact path="/" render = {props => (
+                <Home />
+              )}/>
 
+              <Route path="/auth/user-reg" component={UserReg}/>
+              <Route path="/auth/signin" component={UserSignIn}/>
+              
+              <Route path="/buyer/:buyerLink" component={Buyer}/>
+
+        </div>
       </Router>
     );
   }
