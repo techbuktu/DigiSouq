@@ -10,7 +10,7 @@ import UserSignIn from './components/auth/UserSignIn';
 //Import buyer-related components
 import BidView from './components/buyers/BidView';
 import ProductList from './components/buyers/ProductList';
-import Buyer from './components/buyers/Buyer';
+import BuyerHome from './components/buyers/BuyerHome';
 
 //Import all seller-side components
 import SellerHome from './components/sellers/SellerHome';
@@ -36,8 +36,8 @@ class App extends Component {
               <Route path="/auth/user-reg" component={UserReg}/>
               <Route path="/auth/signin" component={UserSignIn}/>
               
-              <Route path="/buyer/:buyerLink" component={Buyer}/>
-              <Route path="buyer/:buyerLink/bids" component={BidView}/>
+              <Route path="/buyer/:buyerLink" component={BuyerHome} />
+              <Route path="buyer/:buyerLink/bids" component={BidView} />
 
               <Route exact path="/sellers" component={ SellerHome }/>
               <Route path="/sellers/bidboard" component={BidBoard} />
@@ -47,7 +47,6 @@ class App extends Component {
               <Route path="/products/:productLink" component={ProductDetail} />
               <Route path="/products/new-product" component={NewProduct} />
               <Route path="/products/update/:productLink" component={UpdateProduct} />
-
               
               
 
