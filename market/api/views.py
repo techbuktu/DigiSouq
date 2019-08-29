@@ -44,8 +44,8 @@ class UserListView(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     lookup_field = "pk"
-    authentication_classes = []
-    permission_classes = []
+    #authentication_classes = []
+    #permission_classes = []
 
 class UserDetailView(generics.RetrieveUpdateDestroyAPIView):
     """

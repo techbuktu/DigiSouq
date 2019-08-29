@@ -12,12 +12,14 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     seller = serializers.HyperlinkedRelatedField(
         queryset = Seller.objects.all(),
         view_name = "market_api:seller_detail",
-        lookup_field = "link"
+        lookup_field = "link",
+        read_only = True
     )
     buyer = serializers.HyperlinkedRelatedField(
         queryset = Buyer.objects.all(),
         lookup_field = "link",
-        view_name =  "market_api:buyer_detail"
+        view_name =  "market_api:buyer_detail",
+        read_only = True
     )
 
     class Meta:
@@ -38,7 +40,8 @@ class SellerSerializer(serializers.HyperlinkedModelSerializer):
         queryset = Product.objects.all(),
         many=True,
         lookup_field = "link",
-        view_name = "market_api:product_detail"
+        view_name = "market_api:product_detail",
+        read_only = True
     )
     class Meta:
         model = Seller 
@@ -57,7 +60,8 @@ class BuyerSerializer(serializers.HyperlinkedModelSerializer):
         queryset = Bid.objects.all(),
         lookup_field = "pk",
         view_name = "market_api:bid_detail",
-        many = True
+        many = True,
+        read_only = True
     )
 
     class Meta:
@@ -77,7 +81,8 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
         queryset = Bid.objects.all(),
         many = True,
         view_name = "market_api:bid_detail",
-        lookup_field = "pk"
+        lookup_field = "pk",
+        read_only = True
     )
 
     class Meta:
@@ -96,7 +101,7 @@ class BidSerializer(serializers.HyperlinkedModelSerializer):
     product = serializers.HyperlinkedRelatedField(
         queryset = Product.objects.all(),
         view_name = "market_api:product_detail",
-        lookup_field = "link"
+        lookup_field = "link",
     )
     class Meta:
         model = Bid

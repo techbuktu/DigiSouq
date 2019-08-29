@@ -3,7 +3,7 @@ import axios from 'axios';
 const RequestHeaders = {
     'Access-Control-Allow-Origin': '*',
     //'AccessC-Control-Allow-Headers': '*',
-    'Content-Type': 'application/json',
+    'content-type': 'application/json',
 }
 
 
