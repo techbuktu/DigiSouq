@@ -10,7 +10,7 @@ class UserReg extends Component {
             username: '',
             password: ''
         }
-
+        
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }

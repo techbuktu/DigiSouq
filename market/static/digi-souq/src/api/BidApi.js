@@ -1,8 +1,8 @@
-import axios from 'axios';
+import Axios from './BaseApi';
 
 class BidApi {
     static getBidsByBuyer(buyer_link){
-        return axios.get(`localhost:8000/api/market/bids/${buyer_link}`);
+        return Axios.get(`/bids/${buyer_link}`);
     }
 
 }
