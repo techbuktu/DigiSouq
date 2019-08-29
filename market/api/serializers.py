@@ -10,21 +10,24 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     Serializes the auth.User model into various data formats. JSON is default.
     """
     seller = serializers.HyperlinkedRelatedField(
-        queryset = Seller.objects.all(),
+        #queryset = Seller.objects.all(),
         view_name = "market_api:seller_detail",
         lookup_field = "link",
         read_only = True
     )
     buyer = serializers.HyperlinkedRelatedField(
-        queryset = Buyer.objects.all(),
+        #queryset = Buyer.objects.all(),
         lookup_field = "link",
         view_name =  "market_api:buyer_detail",
         read_only = True
     )
+    password = serializers.CharField(
+        write_only=True
+    )
 
     class Meta:
         model = User
-        fields = ['username','pk','first_name','last_name','seller','buyer']
+        fields = ['username','password','pk','first_name','last_name','seller','buyer']
 
 
 class SellerSerializer(serializers.HyperlinkedModelSerializer):
@@ -37,7 +40,7 @@ class SellerSerializer(serializers.HyperlinkedModelSerializer):
         lookup_field = "pk"
     )
     products = serializers.HyperlinkedRelatedField(
-        queryset = Product.objects.all(),
+        #queryset = Product.objects.all(),
         many=True,
         lookup_field = "link",
         view_name = "market_api:product_detail",
@@ -57,7 +60,7 @@ class BuyerSerializer(serializers.HyperlinkedModelSerializer):
         view_name = "market_api:user_detail"
     )
     bids = serializers.HyperlinkedRelatedField(
-        queryset = Bid.objects.all(),
+        #queryset = Bid.objects.all(),
         lookup_field = "pk",
         view_name = "market_api:bid_detail",
         many = True,
@@ -78,7 +81,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
         lookup_field = "link"
     )
     bids = serializers.HyperlinkedRelatedField(
-        queryset = Bid.objects.all(),
+        #queryset = Bid.objects.all(),
         many = True,
         view_name = "market_api:bid_detail",
         lookup_field = "pk",
