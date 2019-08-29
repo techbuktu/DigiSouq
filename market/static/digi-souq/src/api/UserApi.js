@@ -5,11 +5,11 @@ class UserApi {
         this.apiUrl = "localhost:8000/api/market/";
     }
     
-    newUser(user_obj){
-        return axios.post("localhost:8000/api/market/users", user_obj);
+    static newUser(user_obj){
+        return axios.post("localhost:8000/api/market/users/", user_obj);
     }
 
-    getUser(pk){
+    static getUser(pk){
         return axios.get(`${this.apiUrl}/${pk}`);
     }
 }
