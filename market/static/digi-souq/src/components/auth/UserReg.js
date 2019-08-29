@@ -14,6 +14,10 @@ class UserReg extends Component {
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
+    componentDidMount(){
+        UserApi.getUser(1)
+            .then(res => { console.log(res)});
+    }
 
     onSubmit(e){
         e.preventDefault();
