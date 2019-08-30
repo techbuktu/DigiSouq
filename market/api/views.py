@@ -33,7 +33,8 @@ def digisouq_api_root(request, format=None):
         'sellers': reverse('market_api:seller_list', request=request, format=format),
         'buyers': reverse('market_api:buyer_list', request=request, format=format),
         'products': reverse('market_api:product_list', request=request, format=format),
-        'bids': reverse('market_api:bid_list', request=request, format=format)
+        'bids': reverse('market_api:bid_list', request=request, format=format),
+        'Obtain Auth Token': reverse('market_api:auth_token', request=request, format=format), 
     })
 
 
