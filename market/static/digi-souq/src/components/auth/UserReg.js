@@ -6,7 +6,7 @@ class UserReg extends Component {
     constructor(props){
         super(props);
         this.state = {
-            first_name: '',
+            first_name: 'Muhammad',
             last_name: '',
             username: '',
             password: ''
@@ -16,21 +16,25 @@ class UserReg extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
     componentDidMount(){
+        console.log(this.state);
         UserApi.getUser(1)
             .then(res => { console.log(res)});
     }
 
-    onChange(e){
-        this.setState({
-            [e.target.name]: e.target.data
-        });
-        console.log("onChange() this.state:" + this.state);
+    onChange(e) {
+        this.setState({[e.target.name] : e.target.data })
+        //console.log("onChange() this.state:" + this.state);
+        console.log(this.state.first_name);
     }
 
     onSubmit(e){
         e.preventDefault();
         console.log("Form submitted");
-        console.log("this.state:" + this.state);
+        console.log("this.state.first_name:" + this.state.first_name);
+        console.log("this.state.last_name:" + this.state.last_name);
+        console.log("this.state.username:" + this.state.username);
+        console.log("this.state.password:" + this.state.password);
+
         const newUser = {
             first_name: this.state.first_name,
             last_name : this.state.last_name,
@@ -42,6 +46,7 @@ class UserReg extends Component {
         const UserJson = JSON.stringify(newUser);
         console.log(UserJson);
 
+        /*
         const testUser = {
             first_name: 'Allison',
             last_name: 'Wondersome',
@@ -49,9 +54,9 @@ class UserReg extends Component {
             password: 'Secret123'
         }
         let testJson = JSON.stringify(testUser);
+        */
 
-        console.log('testJson: '+ testJson);
-        UserApi.newUser(testJson)
+        UserApi.newUser(UserJson)
             .then(response => {
                 console.log(response);
             })

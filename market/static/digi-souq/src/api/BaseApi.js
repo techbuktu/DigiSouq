@@ -6,7 +6,6 @@ const RequestHeaders = {
     'content-type': 'application/json',
 }
 
-
 const Axios = axios.create({
     baseURL: 'http://localhost:8000/api',
     headers: RequestHeaders
