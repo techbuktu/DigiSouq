@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import UserApi from '../../api/UserApi';
-//import qs from 'qs';
 
 class UserReg extends Component {
     constructor(props){

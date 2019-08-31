@@ -11,6 +11,10 @@ class UserApi {
     static getUser(pk){
         return Axios.get(`/users/${pk}`);
     }
+
+    static getToken(user_obj){
+        return Axios.post('/auth-token/', user_obj);
+    }
 }
 
 
