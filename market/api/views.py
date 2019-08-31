@@ -65,8 +65,8 @@ class SellerListView(generics.ListCreateAPIView):
     queryset = Seller.objects.all()
     serializer_class = SellerSerializer
     lookup_field = "link"
-    authentication_classes = []
-    permission_classes = []
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class SellerDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -75,8 +75,8 @@ class SellerDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Seller.objects.all()
     serializer_class = SellerSerializer
     lookup_field = "link"
-    authentication_classes = []
-    permission_classes = []
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class BuyerListView(generics.ListCreateAPIView):
     """
@@ -85,8 +85,8 @@ class BuyerListView(generics.ListCreateAPIView):
     queryset = Buyer.objects.all()
     serializer_class = BuyerSerializer
     lookup_field = "link"
-    authentication_classes = []
-    permission_classes = []
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class BuyerDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -95,8 +95,8 @@ class BuyerDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Buyer.objects.all()
     serializer_class = BuyerSerializer
     lookup_field = "link"
-    authentication_classes = []
-    permission_classes = []
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class ProductListView(generics.ListCreateAPIView):
     """
@@ -105,8 +105,8 @@ class ProductListView(generics.ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     lookup_field = "link"
-    authentication_classes = []
-    permission_classes = []
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -115,8 +115,8 @@ class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     lookup_field = "link"
-    authentication_classes = []
-    permission_classes = []
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class BidListView(generics.ListCreateAPIView):
     """
@@ -125,8 +125,8 @@ class BidListView(generics.ListCreateAPIView):
     queryset = Bid.objects.all()
     serializer_class = BidSerializer
     lookup_field = "pk"
-    authentication_classes = []
-    permission_classes = []
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class BidDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -135,5 +135,5 @@ class BidDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Bid.objects.all()
     serializer_class = BidSerializer
     lookup_field = "pk"
-    authentication_classes = []
-    permission_classes = []
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticatedOrReadOnly]
