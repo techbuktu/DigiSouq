@@ -23,7 +23,30 @@ import UpdateProduct from './components/sellers/UpdateProduct';
 
 
 class App extends Component {
+
+  state = {
+    userId: '',
+    is_authenticated: false
+  }
+
+  updateUser(){
+    //Check if the user Auth token exists
+    const auth_token = localStorage.getItem('auth_token');
+    const userId = localStorage.getItem('userId');
+    if(auth_token){
+      this.setState({
+        is_authenticated: true,
+        userId: userId
+      })
+    }
+    else{
+      // redirect to UserSignIn component to get the auth token
+      //<Route path="/auth/register" component={UserReg}/>
+    }
+
+  }
   render() {
+    
     return (
       <Router>
           <div className="App">
@@ -34,22 +57,95 @@ class App extends Component {
                 <Home />
               )}/>
 
-              <Route path="/auth/register" component={UserReg}/>
-              <Route path="/auth/signin" component={UserSignIn}/>
-              
-              <Route exact path="/buyers/:buyerLink" component={BuyerHome} />
-              <Route path="/buyers/:buyerLink/bids" component={BidView} />
-              <Route exact path="/products/" component={ProductList}/>
-              <Route exact path="/products/:productLink" component={ ProductBid }/>
+              <Route path="/auth/register" render={props => 
+              (<UserReg {...props} 
+                userId={this.state.userId} 
+                is_authenticated={this.state.is_authenticated} 
+                updateUser={this.updateUser}/>)} 
+              />
 
-              <Route exact path="/sellers/:sellerLink" component={ SellerHome }/>
-              <Route path="/sellers/:sellerLink/bidboard" component={BidBoard} />
+              <Route path="/auth/signin" 
+              render={props => 
+                (<UserSignIn {...props} 
+                  userId={this.state.userId} 
+                  is_authenticated={this.state.is_authenticated} 
+                  updateUser={this.updateUser}/>)} 
+              />
+              
+              <Route exact path="/buyers/:buyerLink" 
+                render={props => 
+                  (<BuyerHome {...props} 
+                    userId={this.state.userId} 
+                    is_authenticated={this.state.is_authenticated} 
+                    updateUser={this.updateUser}/>)} 
+              />
+              <Route path="/buyers/:buyerLink/bids" 
+                render={props => 
+                  (<BidView {...props} 
+                    userId={this.state.userId} 
+                    is_authenticated={this.state.is_authenticated} 
+                    updateUser={this.updateUser}/>)} 
+              />
+              <Route exact path="/products/" 
+                render={props => 
+                  (<ProductList {...props} 
+                    userId={this.state.userId} 
+                    is_authenticated={this.state.is_authenticated} 
+                    updateUser={this.updateUser}/>)} 
+              />
+              <Route exact path="/products/:productLink" 
+                render={props => 
+                  (<ProductBid {...props} 
+                    userId={this.state.userId} 
+                    is_authenticated={this.state.is_authenticated} 
+                    updateUser={this.updateUser}/>)} 
+              />
+
+              <Route exact path="/sellers/:sellerLink" 
+                render={props => 
+                  (<SellerHome {...props} 
+                    userId={this.state.userId} 
+                    is_authenticated={this.state.is_authenticated} 
+                    updateUser={this.updateUser}/>)} 
+              />
+              <Route path="/sellers/:sellerLink/bidboard" 
+                render={props => 
+                  (<BidBoard {...props} 
+                    userId={this.state.userId} 
+                    is_authenticated={this.state.is_authenticated} 
+                    updateUser={this.updateUser}/>)}  
+              />
 
               
-              <Route exact path="/sellers/:sellerLink/inventory" component={Inventory} />
-              <Route path="/sellers/:sellerLink/inventory/new" component={NewProduct} />
-              <Route exact path="/sellers/:sellerLink/:productLink" component={ProductDetail} />
-              <Route path="/sellers/:sellerLink/:productLink/update" component={UpdateProduct} />
+              <Route exact path="/sellers/:sellerLink/inventory" 
+                render={props => 
+                  (<Inventory {...props} 
+                    userId={this.state.userId} 
+                    is_authenticated={this.state.is_authenticated} 
+                    updateUser={this.updateUser}/>)}   
+              />
+              <Route path="/sellers/:sellerLink/inventory/new" 
+                render={props => 
+                  (<NewProduct {...props} 
+                    userId={this.state.userId} 
+                    is_authenticated={this.state.is_authenticated} 
+                    updateUser={this.updateUser}/>)} 
+              />
+
+              <Route exact path="/sellers/:sellerLink/:productLink" 
+                render={props => 
+                  (<ProductDetail {...props} 
+                    userId={this.state.userId} 
+                    is_authenticated={this.state.is_authenticated} 
+                    updateUser={this.updateUser}/>)} 
+              />
+              <Route path="/sellers/:sellerLink/:productLink/update" 
+                render={props => 
+                  (<UpdateProduct {...props}
+                    userId={this.state.userId}
+                    is_authenticated={this.state.is_authenticated} 
+                    updateUser={this.updateUser}/>)} 
+              />
               
         </div>
       </Router>

@@ -13,6 +13,10 @@ class UserSignIn extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
 
+    onChange(){
+        
+    }
+
     submitForm() {
         console.log("SignIn form submitted");
     }

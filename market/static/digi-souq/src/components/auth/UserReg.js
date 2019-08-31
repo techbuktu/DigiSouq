@@ -18,6 +18,8 @@ class UserReg extends Component {
     }
 
     componentDidMount(){
+        console.log('this.props.is_authenticated: ' + this.props.is_authenticated);
+        this.props.updateUser();
         console.log(this.state);
         UserApi.getUser(1)
             .then(res => { console.log(res)});
