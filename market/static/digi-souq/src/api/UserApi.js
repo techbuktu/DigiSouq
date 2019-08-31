@@ -2,6 +2,9 @@ import Axios from './BaseApi';
 
 
 class UserApi {
+    constructor(){
+        
+    }
     
     static newUser(user_obj){
         
