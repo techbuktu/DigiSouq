@@ -6,19 +6,48 @@ class UserSignIn extends Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            authJson: ''
         };
 
         this.onChange = this.onChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+        this.submitForm = this.submitForm.bind(this);
     }
 
-    onChange(){
+    onChange(e){
+        this.setState({
+            [e.target.name]: e.target.value
+        }, () => {
+            this.createAuthCreds();
+        });
+    }
+
+    createAuthCreds(){
+        const authCreds = {
+            username: this.state.username,
+            password: this.state.password
+        }
+        let authJson = JSON.stringify(authCreds);
+        this.setState({
+            authJson: authJson
+        })
+    }
+
+    submitForm(e) {
+        e.preventDefault();
         
-    }
-
-    submitForm() {
-        console.log("SignIn form submitted");
+        UserApi.getToken(this.state.authJson)
+            .then(res => {
+                localStorage.setItem('auth_token', res.data.token);
+                localStorage.setItem('userId', res.data.user_id);
+                this.props.updateUser();
+            })
+            .catch(err => {
+                console.log("UserApi.getToken() error: " + err);
+            })
+            .finally(() => {
+                console.log("UserApi.getToken() ran ...");
+            })
     }
 
     render() {
