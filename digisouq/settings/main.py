@@ -122,11 +122,7 @@ STATIC_URL = '/static/'
 
 #Django REST Framework configurations
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES':[
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-        'rest_framework.authentication.TokenAuthentication',
-    ]
+    
 }
 
 #CORS Headers Settings for the DigiSouq API

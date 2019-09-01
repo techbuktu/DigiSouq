@@ -21,8 +21,9 @@ class UserReg extends Component {
         console.log('this.props.is_authenticated: ' + this.props.is_authenticated);
         this.props.updateUser();
         console.log(this.state);
-        UserApi.getUser(1)
+        /*UserApi.getUser(1)
             .then(res => { console.log(res)});
+        */
     }
 
     onChange(e){
