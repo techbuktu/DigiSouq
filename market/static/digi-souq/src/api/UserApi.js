@@ -1,6 +1,16 @@
 import Axios from './BaseApi';
 import axios from 'axios';
 
+let RequestHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': '*',
+    'content-type': 'application/json',
+}
+const axiosInstance = axios.create({
+    baseURL: 'http://localhost:8000/api',
+    headers: RequestHeaders
+})
+
 
 class UserApi {
     constructor(){
@@ -17,17 +27,8 @@ class UserApi {
     }
 
     static newUser(user_obj){
-        let RequestHeaders = {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': '*',
-            'content-type': 'application/json',
-        }
-       const instance = axios.create({
-        baseURL: 'http://localhost:8000/api',
-        headers: RequestHeaders
-        })
 
-        return instance.post(`/users/`, user_obj);
+        return axiosInstance.post(`/users/`, user_obj);
     }
 }
 

@@ -47,6 +47,7 @@ class UserSignIn extends Component {
             })
             .finally(() => {
                 console.log("UserApi.getToken() ran ...");
+                console.log(`this.props.is_authenticated: ${this.props.is_authenticated} and this.props.userId : ${this.props.userId};`);
             })
     }
 

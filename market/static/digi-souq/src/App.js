@@ -33,15 +33,16 @@ class App extends Component {
     //Check if the user Auth token exists
     const auth_token = localStorage.getItem('auth_token');
     const userId = localStorage.getItem('userId');
-    if(auth_token){
+    if(auth_token.length > 1){
       this.setState({
         is_authenticated: true,
         userId: userId
       })
     }
     else{
+      console.log('User is not authenticated.');
       // redirect to UserSignIn component to get the auth token
-      //<Route path="/auth/register" component={UserReg}/>
+      // <Route path="/auth/register" component={UserReg}/>
     }
 
   }
