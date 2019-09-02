@@ -110,8 +110,8 @@ class ProductListView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         """
-        Conditionally return list of products by the supplied 'seller' or 'buyer'
-        query parameters in the URL.
+        Conditionally return list of products by the supplied 'seller'
+        query parameter in the URL.
         """
         queryset = Product.objects.all()
         buyer = self.request.query_params.get('buyer', None)
@@ -119,7 +119,7 @@ class ProductListView(generics.ListCreateAPIView):
         if seller:
             queryset = queryset.filter(seller__link=seller)
         return queryset
-        
+
 class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     Performs GET, PUT and DELETE requests against a single Product API endpoint
@@ -139,6 +139,23 @@ class BidListView(generics.ListCreateAPIView):
     lookup_field = "pk"
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get_queryset(self):
+        """
+        Conditionally return a list of Bids by the 'seller' or 'buyer'
+        value in the query params.
+        """
+        queryset = Bid.objects.all()
+        seller = self.request.query_params.get('seller', None)
+        buyer = self.request.query_params.get('buyer', None)
+        if seller:
+            queryset = queryset.filter(product__seller__link=seller)
+        elif buyer:
+            queryset = queryset.filter(buyer__link=buyer)
+        else:
+            queryset = queryset
+        return queryset
+
 
 class BidDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
