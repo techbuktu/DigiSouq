@@ -9,8 +9,8 @@ class SellerHome extends Component {
         this.state = {
             auth_token: token,
             sellerLink: '',
-            bidsforseller: [],
-            sellerproducts: []
+            bidsforSeller: [],
+            sellerProducts: []
         }
     }
 

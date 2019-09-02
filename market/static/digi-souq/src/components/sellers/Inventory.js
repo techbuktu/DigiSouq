@@ -8,11 +8,38 @@ class Inventory extends Component {
 
         let token = localStorage.getItem('auth_token');
         this.state = {
-            auth_token: token
+            auth_token: token,
+            inventoryList: []
         }
+
+        this.onChange = this.onChange.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.addProduct = this.addProduct.bind(this);
     }
 
+    componentDidMount(){
+        this.getInventoryList();
+    }
     
+    onChange(e){
+        return;
+    }
+
+    onSubmit(e){
+        return;
+    }
+
+    addProduct(productJson){
+        return;
+    }
+
+    getInventoryList(){
+        return;
+    }
+
+    acceptBid(bidId){
+        return;
+    }
     render() {
         if(this.state.auth_token){
             return (
