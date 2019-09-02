@@ -40,6 +40,7 @@ class Inventory extends Component {
     acceptBid(bidId){
         return;
     }
+    
     render() {
         if(this.state.auth_token){
             return (

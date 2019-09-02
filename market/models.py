@@ -83,6 +83,7 @@ class Bid(models.Model):
         verbose_name="Bid Amount",
         max_digits = 7)
     bid_date = models.DateTimeField(auto_now_add=True)
+    accepted = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['amount','bid_date']
