@@ -4,6 +4,9 @@ import UserApi from '../../api/UserApi';
 class UserSignIn extends Component {
     constructor(props){
         super(props);
+
+        //let token = localStorage.getItem('auth_token');
+
         this.state = {
             username: '',
             password: '',
