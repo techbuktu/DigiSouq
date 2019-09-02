@@ -7,7 +7,10 @@ class SellerHome extends Component {
 
         let token = localStorage.getItem('auth_token');
         this.state = {
-            auth_token: token
+            auth_token: token,
+            sellerLink: '',
+            bidsforseller: [],
+            sellerproducts: []
         }
     }
 
@@ -15,6 +18,7 @@ class SellerHome extends Component {
         //console.log(`this.state.auth_token: ${this.state.auth_token}`);
         this.getSellerDetails();
         this.getProductsBySeller();
+        this.getBidsforSeller();
     }
 
     getSellerDetails(){
@@ -22,6 +26,10 @@ class SellerHome extends Component {
     }
 
     getProductsBySeller(){
+        return;
+    }
+
+    getBidsforSeller(){
         return;
     }
 
