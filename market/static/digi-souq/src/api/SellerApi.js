@@ -6,7 +6,7 @@ class SellerApi {
     }
 
     static getAllSellers(){
-        returnAxios.get(`/sellers/`);
+        return Axios.get(`/sellers/`);
     }
 
     static getSeller(seller_link){

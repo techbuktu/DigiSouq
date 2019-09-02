@@ -11,7 +11,7 @@ class BidApi {
         return Axios.post(`/bids/`, bid_obj);
     }
 
-    getBidsforSeller(seller_link){
+    static getBidsforSeller(seller_link){
         return Axios.get(`/bids/?seller=${seller_link}`);
     }
 }
