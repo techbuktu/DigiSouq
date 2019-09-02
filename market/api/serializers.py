@@ -108,6 +108,6 @@ class BidSerializer(serializers.HyperlinkedModelSerializer):
     )
     class Meta:
         model = Bid
-        fields = ['pk','buyer','product','amount','bid_date']
+        fields = ['pk','buyer','product','amount','bid_date','accepted']
 
 

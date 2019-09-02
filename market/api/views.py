@@ -108,6 +108,18 @@ class ProductListView(generics.ListCreateAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    def get_queryset(self):
+        """
+        Conditionally return list of products by the supplied 'seller' or 'buyer'
+        query parameters in the URL.
+        """
+        queryset = Product.objects.all()
+        buyer = self.request.query_params.get('buyer', None)
+        seller = self.request.query_params.get('seller', None)
+        if seller:
+            queryset = queryset.filter(seller__link=seller)
+        return queryset
+        
 class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     """
     Performs GET, PUT and DELETE requests against a single Product API endpoint
