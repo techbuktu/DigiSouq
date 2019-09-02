@@ -90,7 +90,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Product 
-        fields = ['seller','bids','name','desc','quantity','price','pk']
+        fields = ['seller','bids','name','desc','quantity','price','pk','link']
 
 class BidSerializer(serializers.HyperlinkedModelSerializer):
     """

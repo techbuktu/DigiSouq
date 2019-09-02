@@ -84,9 +84,10 @@ class SellerHome extends Component {
                     <p>{this.state.seller.about} </p>
                     <h4>List of Seller's Products</h4>
 
-                    <ul>
-                        
-                    </ul>
+                    {this.state.sellerProducts.map((product) => {
+                        return <Link to={`/sellers/${this.state.sellerLink}/${product.link}`}> {product.name} </Link>
+                    })}
+                    
                 </div>
                 
             )
