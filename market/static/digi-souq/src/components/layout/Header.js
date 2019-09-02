@@ -1,9 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import React, { Component } from 'react'
-
-class Header extends Component {
+class Header extends React.Component {
     constructor(props){
         super(props);
 
