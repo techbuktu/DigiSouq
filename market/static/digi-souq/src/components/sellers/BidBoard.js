@@ -3,6 +3,16 @@ import {Redirect, Link} from 'react-router-dom';
 import BidApi from '../../api/BidApi';
 
 class BidBoard extends Component {
+    constructor(props){
+        super(props);
+
+        let token = localStorage.getItem('auth_token');
+        this.state = {
+            auth_token: token
+        }
+    }
+
+    
     render() {
         return (
             <div>
