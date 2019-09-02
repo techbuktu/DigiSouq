@@ -66,6 +66,9 @@ class Product(models.Model):
         if not self.link:
             self.link = slugify(self.name)
         super(Product, self).save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.name 
 
 
 class Bid(models.Model):

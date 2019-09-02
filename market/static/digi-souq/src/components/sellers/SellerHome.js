@@ -79,13 +79,18 @@ class SellerHome extends Component {
         if(this.state.auth_token){
             return (
                 <div>
-                    <p>First Name: {this.state.seller.first_name} </p>
-                    <h4>About Seller</h4>
-                    <p>{this.state.seller.about} </p>
+                    
+                    <h4>About this Seller</h4>
+                    <p>{this.state.seller.link}: {this.state.seller.about} </p>
                     <h4>List of Seller's Products</h4>
 
                     {this.state.sellerProducts.map((product) => {
-                        return <Link to={`/sellers/${this.state.sellerLink}/${product.link}`}> {product.name} </Link>
+                        return (
+                        <p> 
+                            <Link to={`/sellers/${this.state.sellerLink}/${product.link}`}> {product.name} </Link>
+                            Price: $$ {product.price} <strong>Quantity</strong>: {product.quantity} 
+                        </p>
+                        )
                     })}
                     
                 </div>
