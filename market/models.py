@@ -60,6 +60,7 @@ class Product(models.Model):
         max_digits = 7,
         decimal_places = 2
     )
+    link = models.SlugField(max_length=150, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.link:

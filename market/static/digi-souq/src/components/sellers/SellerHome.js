@@ -20,13 +20,21 @@ class SellerHome extends Component {
 
     componentDidMount(){
         //console.log(`this.state.auth_token: ${this.state.auth_token}`);
-        this.getSellerDetails();
-        this.getProductsBySeller();
+        let sellerLink = this.props.match.params.sellerLink;
+        console.log(sellerLink);
+        this.setState({
+            sellerLink: sellerLink
+        }, () => {
+            this.getSellerDetails(this.state.sellerLink);
+            this.getProductsBySeller(this.state.sellerLink);
+        });
+
+        
         this.getBidsforSeller();
     }
 
-    getSellerDetails(){
-        SellerApi.getSeller('mbarry')
+    getSellerDetails(seller_link){
+        SellerApi.getSeller(seller_link)
             .then(res => {
                 this.setState({
                     seller: res.data
@@ -38,14 +46,13 @@ class SellerHome extends Component {
             .finally()
     }
 
-    getProductsBySeller(){
-        ProductApi.getProductsBySeller('mbarry')
+    getProductsBySeller(seller_link){
+        ProductApi.getProductsBySeller(seller_link)
             .then(res => {
                 this.setState({
                     sellerProducts: res.data
-                }, ()=>{
-                    console.log(`sellerProducts: ${this.state.sellerProducts}`);
-                });
+                }, 
+                ()=> console.log(`sellerProducts from API: ${this.state.sellerProducts}`))
             })
             .catch(err => {
                 console.log(err);
@@ -77,6 +84,9 @@ class SellerHome extends Component {
                     <p>{this.state.seller.about} </p>
                     <h4>List of Seller's Products</h4>
 
+                    <ul>
+                        
+                    </ul>
                 </div>
                 
             )
