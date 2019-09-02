@@ -14,11 +14,16 @@ class UpdateProduct extends Component {
 
     
     render() {
-        return (
-            <div>
-                Update the details of a Product
-            </div>
-        )
+        if(this.state.auth_token){
+            return (
+                <div>
+                    Update the details of a Product
+                </div>
+            )
+            }
+            else {
+                return <Redirect to="/auth/signin" />
+            }
     }
 }
 

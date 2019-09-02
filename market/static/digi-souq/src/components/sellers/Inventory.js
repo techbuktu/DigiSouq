@@ -14,11 +14,16 @@ class Inventory extends Component {
 
     
     render() {
-        return (
-            <div>
-                Inventory of Products by this Seller
-            </div>
-        )
+        if(this.state.auth_token){
+            return (
+                <div>
+                    Inventory of Products by this Seller
+                </div>
+            )
+        }
+        else {
+            return <Redirect to="/auth/signin" />
+        }
     }
 }
 

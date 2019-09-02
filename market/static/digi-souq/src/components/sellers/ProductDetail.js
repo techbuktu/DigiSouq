@@ -14,11 +14,16 @@ class ProductDetail extends Component {
 
     
     render() {
-        return (
-            <div>
-                Deatils about a Product in this Seller's Inventory.
-            </div>
-        )
+        if(this.state.auth_token){
+            return (
+                <div>
+                    Details about a Product in this Seller's Inventory.
+                </div>
+            )
+            }
+            else {
+                return <Redirect to="/auth/signin" />
+            }
     }
 }
 

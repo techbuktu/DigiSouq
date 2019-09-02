@@ -14,11 +14,16 @@ class BidBoard extends Component {
 
     
     render() {
-        return (
-            <div>
-                Seller view and accept bid for your Products.
-            </div>
-        )
+        if(this.state.auth_token){
+            return (
+                <div>
+                    Seller view and accept bid for your Products.
+                </div>
+            )
+        }
+        else {
+            return <Redirect to="/auth/signin" />
+        }
     }
 }
 

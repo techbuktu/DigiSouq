@@ -14,11 +14,16 @@ class NewProduct extends Component {
 
     
     render() {
-        return (
-            <div>
-                Add a New Product to Your Inventory.
-            </div>
-        )
+        if(this.state.auth_token){
+            return (
+                <div>
+                    Add a New Product to Your Inventory.
+                </div>
+            )
+            }
+            else {
+                return <Redirect to="/auth/signin" />
+            }
     }
 }
 
