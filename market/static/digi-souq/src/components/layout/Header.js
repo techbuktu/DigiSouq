@@ -14,7 +14,7 @@ class Header extends Component {
         let auth_token = localStorage.getItem('auth_token');
         if(auth_token){
             localStorage.removeItem('auth_token');
-        }
+        } 
     }
     render() {
         return (
