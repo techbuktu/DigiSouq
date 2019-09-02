@@ -20,6 +20,10 @@ class ProductApi {
         return Axios.put(`/products/${product_link}/`, updated_product);
     }
 
+    static getProductsBySeller(sellerLink){
+        return Axios.get(`/products/?seller=${sellerLink}`);
+    }
+
 }
 
 export default ProductApi;

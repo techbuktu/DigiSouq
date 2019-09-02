@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Redirect, Link} from 'react-router-dom';
+import ProductApi from '../../api/ProductApi';
 
 class SellerHome extends Component {
     constructor(props){
@@ -26,7 +27,10 @@ class SellerHome extends Component {
     }
 
     getProductsBySeller(){
-        return;
+        ProductApi.getProductsBySeller('mbarry')
+            .then()
+            .catch()
+            .finally()
     }
 
     getBidsforSeller(){
