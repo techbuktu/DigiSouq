@@ -84,14 +84,48 @@ class SellerHome extends Component {
                     <p>{this.state.seller.link}: {this.state.seller.about} </p>
                     <h4>List of Seller's Products</h4>
 
+                    <table>
+                        <th>
+                            Name 
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Quantity
+                        </th>
+                        <th>
+                            Edit Details
+                        </th>
+                        
+                    
                     {this.state.sellerProducts.map((product) => {
+
                         return (
-                        <p> 
-                            <Link to={`/sellers/${this.state.sellerLink}/${product.link}`}> {product.name} </Link>
-                            Price: $$ {product.price} <strong>Quantity</strong>: {product.quantity} 
-                        </p>
+                            <React.Fragment>
+                                <tr>
+                                    <td>
+                                        <Link to={`/sellers/${this.state.sellerLink}/${product.link}`}> {product.name} </Link>
+                                    </td>
+                                    <td>
+                                        $ {product.price} 
+                                    </td>
+                                    <td>
+                                        {product.quantity} 
+                                    </td>
+                                    <td>
+                                        <Link to={`/sellers/${this.state.sellerLink}/${product.link}`}><button>Manage</button></Link>
+                                    </td>
+                            
+                                    
+                                    
+                                    
+                                </tr>
+                            </React.Fragment>
                         )
                     })}
+
+                    </table>
                     
                 </div>
                 
