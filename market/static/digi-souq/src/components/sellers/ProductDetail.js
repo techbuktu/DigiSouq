@@ -73,7 +73,7 @@ class ProductDetail extends Component {
                         Quantity: {this.state.product.quantity}
                     </p>
                     <button onClick={this.deleteProduct}>Delete this Product</button>
-                    <UpdateProduct />
+                    <UpdateProduct product={this.state.product} />
                 </div>
             )
             }

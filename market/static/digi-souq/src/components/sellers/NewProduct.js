@@ -8,8 +8,30 @@ class NewProduct extends Component {
 
         let token = localStorage.getItem('auth_token');
         this.state = {
-            auth_token: token
+            auth_token: token,
+            updatedProductJson: "",
+            productLink: '',
+            name: '',
+            price: '',
+            desc: '',
+            quantity: ''
         }
+
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
+    }
+
+    onChange(e){
+        return;
+    }
+
+    newProductObj(product_obj){
+        return;
+        this.setState({ updatedProductJson: ''}, () => {})
+    }
+
+    onSubmit(e){
+        //ProductApi.newProduct(this.updatedProductJson)
     }
 
     
