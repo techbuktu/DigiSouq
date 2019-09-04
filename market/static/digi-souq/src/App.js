@@ -127,20 +127,18 @@ class App extends Component {
               />
               <Route exact path="/sellers/:sellerLink/new-product" 
                 render={props => 
-                  (<NewProduct {...props} 
-                    userId={this.state.userId} 
-                    is_authenticated={this.state.is_authenticated} 
+                  (<NewProduct {...props}
                     updateUser={this.updateUser}/>)} 
               />
 
-              <Route path="/sellers/:sellerLink/:productLink" 
+              <Route path="/sellers/:sellerLink/inventory/:productLink" 
                 render={props => 
                   (<ProductDetail {...props} 
                     userId={this.state.userId} 
                     is_authenticated={this.state.is_authenticated} 
                     updateUser={this.updateUser}/>)} 
               />
-              <Route exact path="/sellers/:sellerLink/:productLink/update" 
+              <Route exact path="/sellers/:sellerLink/:productLink/update/one" 
                 render={props => 
                   (<UpdateProduct {...props}
                     userId={this.state.userId}

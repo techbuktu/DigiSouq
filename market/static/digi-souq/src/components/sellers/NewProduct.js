@@ -9,16 +9,22 @@ class NewProduct extends Component {
         let token = localStorage.getItem('auth_token');
         this.state = {
             auth_token: token,
-            newProductJson: "",
-            productLink: '',
+            newProductJson: '',
             name: '',
             price: '',
             desc: '',
-            quantity: ''
+            quantity: '',
+            sellerLink: ''
         }
 
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
+    }
+
+    componentDidMount(){
+        let sellerLink = this.props.match.params.sellerLink;
+        this.setState({sellerLink: sellerLink}, () => {});
+
     }
 
     onChange(e){
@@ -34,12 +40,15 @@ class NewProduct extends Component {
             name: this.state.name,
             price: this.state.price,
             desc: this.state.desc,
-            quantity: this.state.quantity
+            quantity: this.state.quantity,
+            seller: "http://localhost:8000/api/sellers/mbarry/"
         };
 
         let newProductJson = JSON.stringify(newProduct);
         this.setState({ 
-            newProductJson: newProductJson}, () => {});
+            newProductJson: newProductJson}, () => {
+                console.log(`newProductJson: ${newProductJson}`);
+            });
     }
 
     onSubmit(e){

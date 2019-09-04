@@ -76,9 +76,10 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     Serializes the market.Product model various data format. JSON is the default.
     """
     seller = serializers.HyperlinkedRelatedField(
-        queryset = Seller.objects.all(),
+        #queryset = Seller.objects.all(),
         view_name = "market_api:seller_detail",
-        lookup_field = "link"
+        lookup_field = "link",
+        read_only = True
     )
     bids = serializers.HyperlinkedRelatedField(
         #queryset = Bid.objects.all(),
