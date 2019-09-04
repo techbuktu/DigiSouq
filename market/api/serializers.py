@@ -76,10 +76,10 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     Serializes the market.Product model various data format. JSON is the default.
     """
     seller = serializers.HyperlinkedRelatedField(
-        #queryset = Seller.objects.all(),
+        queryset = Seller.objects.all(),
         view_name = "market_api:seller_detail",
         lookup_field = "link",
-        read_only = True
+        #read_only = True
     )
     bids = serializers.HyperlinkedRelatedField(
         #queryset = Bid.objects.all(),
@@ -92,6 +92,17 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Product 
         fields = ['seller','bids','name','desc','quantity','price','pk','link']
+
+    def create(self, validated_data):
+        """
+        Override the creation of a new market.Product object by extracting and mapping 
+        the Product.seller ForeignKey field in the POSTed data.
+        """
+        seller = validated_data.get('seller',None)
+        if seller is not None:
+            seller_obj = Seller.objects.get(link=seller)
+            new_product = Product.objects.create(seller=seller_obj, **validated_data)
+            return new_product
 
 class BidSerializer(serializers.HyperlinkedModelSerializer):
     """

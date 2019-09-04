@@ -120,10 +120,6 @@ class SellerHome extends Component {
                                     <td>
                                         <Link to={`/sellers/${this.state.sellerLink}/inventory/${product.link}`}><button>Manage</button></Link>
                                     </td>
-                            
-                                    
-                                    
-                                    
                                 </tr>
                             </React.Fragment>
                         )

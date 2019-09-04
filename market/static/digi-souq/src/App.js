@@ -138,7 +138,7 @@ class App extends Component {
                     is_authenticated={this.state.is_authenticated} 
                     updateUser={this.updateUser}/>)} 
               />
-              <Route exact path="/sellers/:sellerLink/:productLink/update/one" 
+              <Route exact path="/sellers/:sellerLink/:productLink/update/" 
                 render={props => 
                   (<UpdateProduct {...props}
                     userId={this.state.userId}
