@@ -18,6 +18,9 @@ class UpdateProduct extends Component {
             return (
                 <div>
                     Update the details of a Product
+                    <form>
+                        Name, Price, Description (textarea)
+                    </form>
                 </div>
             )
             }

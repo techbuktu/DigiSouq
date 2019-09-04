@@ -19,7 +19,7 @@ class SellerHome extends Component {
     }
 
     componentDidMount(){
-        //console.log(`this.state.auth_token: ${this.state.auth_token}`);
+        
         let sellerLink = this.props.match.params.sellerLink;
         console.log(sellerLink);
         this.setState({

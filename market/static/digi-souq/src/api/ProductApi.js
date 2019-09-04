@@ -24,6 +24,11 @@ class ProductApi {
         return Axios.get(`/products/?seller=${sellerLink}`);
     }
 
+    static deleteProduct(product_link){
+        return Axios.delete(`/products/${product_link}`);
+    }
+
+    
 }
 
 export default ProductApi;
