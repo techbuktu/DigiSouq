@@ -15,7 +15,7 @@ class UpdateProduct extends Component {
             productLink: '',
             updatedName: '',
             updatedPrice: '',
-            udatedDesc: '',
+            updatedDesc: '',
             updatedQuantity: ''
         }
 
@@ -25,16 +25,35 @@ class UpdateProduct extends Component {
     }
 
     onChange(e){
-        return;
+        this.setState({
+            [e.target.name]: e.target
+        }, () => {
+            this.createProductJson();
+        })
+    }
+
+    createProductJson(){
+        let updatedProductJson = ""
+        let updatedProdut = {
+            name: this.state.updatedName,
+            price: this.state.updatedPrice,
+            quantity: this.state.updatedQuantity,
+            desc: this.state.updatedDesc
+        };
+        updatedProductJson = JSON.stringify(updatedProdut);
+        this.setState({ updatedProductJson: updatedProductJson });
     }
 
     onSubmit(e){
-        return;
-        this.createNewProduct();
-    }
-
-    updateProduct(){
-        return;
+        e.preventDefault();
+        ProductApi.updateProduct(this.props.product.link, this.state.updatedProductJson)
+            .then(res => {
+                console.log(`updateProduct() API response: ${res.data}`);
+            })
+            .catch(error => {
+                console.log(`updatedProduct() API Error: ${error}`);
+            })
+            .finally()
     }
     
     render() {
@@ -47,21 +66,27 @@ class UpdateProduct extends Component {
                             <label>
                                 Product Name
                             </label>
-                                <input type="text" defaultValue="" name="name" onChange={this.onChange} placeHolder={this.props.product.name} />
+                                <input type="text" defaultValue={this.props.product.name} name="name" onChange={this.onChange} placeholder={this.props.product.name} />
                             </p>
                         <p>
                             <label>
                                 Price
                             </label>
-                            <input type="number" name="price" defaultValue="" onChange={this.onChange} placeHolder={this.props.product.price} />
+                            <input type="number" name="price" min="0" step="0.01" defaultValue={this.props.product.price} onChange={this.onChange} placeholder={this.props.product.price} />
                         </p>
                         <p>
                             <label>
                                 Description
                             </label>
-                            <textarea name="desc" defaultValue=""  placeHolder={this.props.product.desc} onChange={this.onChange} />
+                            <textarea name="desc" defaultValue={this.props.product.desc}  placeholder={this.props.product.desc} onChange={this.onChange} />
                         </p>
-                        <button type="submit">Add Product</button>
+                        <p>
+                            <label>
+                                Quantity
+                            </label>
+                            <input type="number" min="0" name="quantity" defaultValue={this.props.product.quantity} onChange={this.onChange} placeholder={this.props.product.quantity} />
+                        </p>
+                        <button type="submit">Update Product</button>
                     </form>
                 </div>
             )
