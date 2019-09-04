@@ -39,7 +39,9 @@ class NewProduct extends Component {
         if(this.state.auth_token){
             return (
                 <div>
-                    Add a New Product to Your Inventory.
+                    <h4> Add a New Product to Your Inventory </h4>
+
+                    
                 </div>
             )
             }

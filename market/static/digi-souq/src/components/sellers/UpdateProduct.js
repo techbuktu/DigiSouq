@@ -60,7 +60,8 @@ class UpdateProduct extends Component {
         if(this.state.auth_token){
             return (
                 <div>
-                    Update the "{this.props.product.name}" Product
+                    <h5>Update the "{this.props.product.name}" Product </h5>
+
                     <form onSubmit={this.onSubmit}>
                         <p>
                             <label>
