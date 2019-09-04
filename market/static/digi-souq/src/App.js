@@ -125,7 +125,7 @@ class App extends Component {
                     is_authenticated={this.state.is_authenticated} 
                     updateUser={this.updateUser}/>)}   
               />
-              <Route path="/sellers/:sellerLink/inventory/new" 
+              <Route exact path="/sellers/:sellerLink/new-product" 
                 render={props => 
                   (<NewProduct {...props} 
                     userId={this.state.userId} 
@@ -133,14 +133,14 @@ class App extends Component {
                     updateUser={this.updateUser}/>)} 
               />
 
-              <Route exact path="/sellers/:sellerLink/:productLink" 
+              <Route path="/sellers/:sellerLink/:productLink" 
                 render={props => 
                   (<ProductDetail {...props} 
                     userId={this.state.userId} 
                     is_authenticated={this.state.is_authenticated} 
                     updateUser={this.updateUser}/>)} 
               />
-              <Route path="/sellers/:sellerLink/:productLink/update" 
+              <Route exact path="/sellers/:sellerLink/:productLink/update" 
                 render={props => 
                   (<UpdateProduct {...props}
                     userId={this.state.userId}

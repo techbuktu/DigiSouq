@@ -82,6 +82,10 @@ class SellerHome extends Component {
                     
                     <h4>About this Seller</h4>
                     <p>{this.state.seller.link}: {this.state.seller.about} </p>
+
+                    <p>
+                        <Link to={`/sellers/${this.state.sellerLink}/new-product`}> <button>Add a New Product</button> </Link>
+                    </p>
                     <h4>List of Seller's Products</h4>
 
                     <table>
