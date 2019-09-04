@@ -109,7 +109,7 @@ class SellerHome extends Component {
                             <React.Fragment>
                                 <tr>
                                     <td>
-                                        <Link to={`/sellers/inventory/${this.state.sellerLink}/${product.link}`}> {product.name} </Link>
+                                        <Link to={`/sellers/${this.state.sellerLink}/inventory/${product.link}`}> {product.name} </Link>
                                     </td>
                                     <td>
                                         $ {product.price} 
@@ -118,7 +118,7 @@ class SellerHome extends Component {
                                         {product.quantity} 
                                     </td>
                                     <td>
-                                        <Link to={`/sellers/${this.state.sellerLink}/${product.link}`}><button>Manage</button></Link>
+                                        <Link to={`/sellers/${this.state.sellerLink}/inventory/${product.link}`}><button>Manage</button></Link>
                                     </td>
                             
                                     
