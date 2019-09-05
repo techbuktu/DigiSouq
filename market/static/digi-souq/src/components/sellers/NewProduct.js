@@ -26,7 +26,6 @@ class NewProduct extends Component {
         this.setState({sellerLink: `http://localhost:8000/api/sellers/${sellerLink}/`}, () => {
             console.log(`let sellerLink=${sellerLink} and this.state.sellerLink=${this.state.sellerLink}`)
         });
-
     }
 
     onChange(e){
