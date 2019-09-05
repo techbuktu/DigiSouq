@@ -23,7 +23,9 @@ class NewProduct extends Component {
 
     componentDidMount(){
         let sellerLink = this.props.match.params.sellerLink;
-        this.setState({sellerLink: sellerLink}, () => {});
+        this.setState({sellerLink: sellerLink}, () => {
+            console.log(`let sellerLink=${sellerLink} and this.state.sellerLink=${this.state.sellerLink}`)
+        });
 
     }
 
@@ -41,19 +43,19 @@ class NewProduct extends Component {
             price: this.state.price,
             desc: this.state.desc,
             quantity: this.state.quantity,
-            seller: "http://localhost:8000/api/sellers/mbarry/"
+            seller: this.state.sellerLink
         };
 
         let newProductJson = JSON.stringify(newProduct);
         this.setState({ 
             newProductJson: newProductJson}, () => {
-                console.log(`newProductJson: ${newProductJson}`);
+                console.log(`newProductJson: ${this.state.newProductJson}`);
             });
     }
 
     onSubmit(e){
         e.preventDefault();
-        ProductApi.newProduct(this.newProductJson)
+        ProductApi.newProduct(this.state.newProductJson)
             .then(res => {
                 if(res.data){
                     console.log(`newProduct() API Response: ${res.data}`);
@@ -61,7 +63,7 @@ class NewProduct extends Component {
                 }
             })
             .catch(err => {
-                console.log(`newProduct() API Error: ${err}`);
+                console.log(`newProduct() API Error: ${err.response}`);
             })
             .finally()
     }

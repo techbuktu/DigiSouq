@@ -106,7 +106,7 @@ class ProductListView(generics.ListCreateAPIView):
     serializer_class = ProductSerializer
     lookup_field = "link"
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    #permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         """
