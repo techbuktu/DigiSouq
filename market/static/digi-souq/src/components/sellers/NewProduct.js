@@ -21,9 +21,9 @@ class NewProduct extends Component {
         this.onSubmit = this.onSubmit.bind(this)
     }
 
-    componentDidMount(){
+    componentWillMount(){
         let sellerLink = this.props.match.params.sellerLink;
-        this.setState({sellerLink: sellerLink}, () => {
+        this.setState({sellerLink: `http://localhost:8000/api/sellers/${sellerLink}/`}, () => {
             console.log(`let sellerLink=${sellerLink} and this.state.sellerLink=${this.state.sellerLink}`)
         });
 
@@ -55,6 +55,8 @@ class NewProduct extends Component {
 
     onSubmit(e){
         e.preventDefault();
+        this.setState({[e.target.name]:''});
+        console.log(`this.state.newProductJson: ${this.state.newProductJson}`);
         ProductApi.newProduct(this.state.newProductJson)
             .then(res => {
                 if(res.data){
@@ -67,7 +69,6 @@ class NewProduct extends Component {
             })
             .finally()
     }
-
     
     render() {
         if(this.state.auth_token){
