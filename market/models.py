@@ -15,7 +15,7 @@ class Seller(models.Model):
         on_delete = models.CASCADE
     )
     about = models.TextField()
-    link = models.SlugField(max_length=150, blank=True)
+    link = models.SlugField(max_length=150, blank=True, unique=True)
 
     def __str__(self):
         return self.user.username 
@@ -34,7 +34,7 @@ class Buyer(models.Model):
         related_name = "buyer",
         on_delete =  models.CASCADE
     )
-    link = models.SlugField(max_length=150, blank=True)
+    link = models.SlugField(max_length=150, blank=True, unique=True)
 
     def __str__(self):
         return self.user.username 
@@ -60,7 +60,7 @@ class Product(models.Model):
         max_digits = 7,
         decimal_places = 2
     )
-    link = models.SlugField(max_length=150, blank=True)
+    link = models.SlugField(max_length=150, blank=True, unique=True)
 
     def save(self, *args, **kwargs):
         if not self.link:

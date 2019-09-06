@@ -8,15 +8,35 @@ class ProductList extends Component {
 
         let token = localStorage.getItem('auth_token');
         this.state = {
-            auth_token: token
+            auth_token: token,
+            product_list: []
         }
     }
 
+    componentWillMount(){
+        this.getAllProducts();
+    }
+
+    getAllProducts(){
+        ProductApi.getAllProducts()
+            .then(response => {
+                this.setState({
+                    product_list: response.data
+                }, () => {
+                    console.log(`this.state.product_list from API: ${this.state.product_list}`);
+                })
+            })
+            .catch()
+            .finally()
+    }
     
     render() {
         return (
             <div>
-                List of Products for Buyer to view and bid on.
+                <h4> Current Products on Auction</h4>
+                {this.state.product_list.map((product) => {
+                   return ( <p> {product.name} </p>)
+                })}
             </div>
         )
     }

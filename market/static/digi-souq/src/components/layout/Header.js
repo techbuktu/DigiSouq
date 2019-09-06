@@ -21,7 +21,7 @@ class Header extends React.Component {
                 <h4>DigiSouq: The Digital Marketplace</h4>
                 <button> <Link to="/">Home</Link> </button>
                 <button> <Link to="/auth/signin">Sign In</Link> </button>
-                <button> <Link to="/">Seller Home</Link> </button>
+                <button> <Link to="/products">Products</Link> </button>
                 <button> <Link to="">Buyer Home</Link> </button>
                 <button onClick={this.logOut}>Logout</button>
             </div>
