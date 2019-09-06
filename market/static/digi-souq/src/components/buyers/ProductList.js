@@ -35,7 +35,12 @@ class ProductList extends Component {
             <div>
                 <h4> Current Products on Auction</h4>
                 {this.state.product_list.map((product) => {
-                   return ( <p> {product.name} </p>)
+                   return (
+                        <p> 
+                            <Link to={`/products/${product.link}`}> {product.name} </Link>  |  ${product.price}
+                        </p>
+                        
+                    )
                 })}
             </div>
         )
