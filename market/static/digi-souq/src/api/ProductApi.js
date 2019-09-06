@@ -17,7 +17,7 @@ class ProductApi {
     }
 
     static updateProduct(product_link, updated_product){
-        return Axios.put(`/products/${product_link}/`, updated_product);
+        return Axios.patch(`/products/${product_link}/`, updated_product);
     }
 
     static getProductsBySeller(sellerLink){

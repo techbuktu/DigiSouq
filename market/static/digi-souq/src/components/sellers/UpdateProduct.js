@@ -24,6 +24,16 @@ class UpdateProduct extends Component {
 
     }
 
+    componentDidMount(){
+        this.setState({
+            updatedName: this.props.product.name,
+            updatedPrice: this.props.product.price,
+            updatedDesc: this.props.product.desc,
+            updatedQuantity: this.props.product.quantity,
+            seller: this.props.product.seller 
+        }, () => { return; })
+    }
+
     onChange(e){
         this.setState({
             [e.target.name]: e.target.value
@@ -39,7 +49,14 @@ class UpdateProduct extends Component {
             quantity: this.state.updatedQuantity,
             desc: this.state.updatedDesc,
             seller: this.props.product.seller
-        };
+        }; 
+        /* let updatedProduct = {
+                name: this.props.product.name,
+                price: this.props.product.price,
+                desc: this.props.product.desc,
+                quantity: this.props.product.quantity,
+                seller: this.props.product.seller 
+        }*/
         
         let updatedProductJson = JSON.stringify(updatedProduct);
         this.setState({ updatedProductJson: updatedProductJson }, () => {
