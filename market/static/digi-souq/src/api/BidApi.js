@@ -14,6 +14,10 @@ class BidApi {
     static getBidsforSeller(seller_link){
         return Axios.get(`/bids/?seller=${seller_link}`);
     }
+
+    static updateBid(bid_link, updated_bid_obj){
+        return Axios.patch(`/bids/`, updated_bid_obj);
+    }
 }
 
 export default BidApi;

@@ -11,7 +11,6 @@ const axiosInstance = axios.create({
     headers: RequestHeaders
 })
 
-
 class UserApi {
     constructor(){
         

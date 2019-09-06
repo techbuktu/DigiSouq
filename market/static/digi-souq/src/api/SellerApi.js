@@ -18,7 +18,7 @@ class SellerApi {
     }
 
     static updateSeller(seller_link, updated_seller_obj){
-        return Axios.put(`/sellers/${seller_link}/`, updated_seller_obj);
+        return Axios.patch(`/sellers/${seller_link}/`, updated_seller_obj);
     }
 
 

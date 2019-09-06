@@ -12,7 +12,7 @@ class BuyerApi {
     }
 
     static updateBuyer(buyer_link, updated_buyer_obj){
-        return Axios.put(`/buyers/${buyer_link}/`, updated_buyer_obj);
+        return Axios.patch(`/buyers/${buyer_link}/`, updated_buyer_obj);
     }
 
     static getAllBuyers(){
