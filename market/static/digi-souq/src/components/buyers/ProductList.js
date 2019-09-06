@@ -31,19 +31,24 @@ class ProductList extends Component {
     }
     
     render() {
-        return (
-            <div>
-                <h4> Current Products on Auction</h4>
-                {this.state.product_list.map((product) => {
-                   return (
-                        <p> 
-                            <Link to={`/products/${product.link}`}> {product.name} </Link>  |  ${product.price}
-                        </p>
-                        
-                    )
-                })}
-            </div>
-        )
+        if(this.state.auth_token){
+            return (
+                <div>
+                    <h4> Current Products on Auction</h4>
+                    {this.state.product_list.map((product) => {
+                       return (
+                            <p> 
+                                <Link to={`/products/${product.link}`}> {product.name} </Link>  |  ${product.price}
+                            </p>
+                            
+                        )
+                    })}
+                </div>
+            )
+        }
+        else {
+            return <Redirect to="/auth/signin" />
+        }
     }
 }
 

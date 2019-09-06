@@ -138,7 +138,7 @@ class BidListView(generics.ListCreateAPIView):
     serializer_class = BidSerializer
     lookup_field = "pk"
     authentication_classes = [TokenAuthentication]
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    #permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
         """

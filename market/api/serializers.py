@@ -107,6 +107,8 @@ class BidSerializer(serializers.HyperlinkedModelSerializer):
         view_name = "market_api:product_detail",
         lookup_field = "link",
     )
+
+    bid_date = serializers.DateTimeField(read_only=True)
     class Meta:
         model = Bid
         fields = ['pk','buyer','product','amount','bid_date','accepted']
