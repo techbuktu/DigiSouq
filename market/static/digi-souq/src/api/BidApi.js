@@ -2,7 +2,7 @@ import Axios from './BaseApi';
 
 class BidApi {
     static getBidsByBuyer(buyer_link){
-        return Axios.get(`/bids/?buyer=${buyer_link}`);
+        return Axios.get(`/bids/?buyer=${buyer_link}/`);
     }
 
     static placeBid(bid_obj){
@@ -10,7 +10,7 @@ class BidApi {
     }
 
     static getBidsforSeller(seller_link){
-        return Axios.get(`/bids/?seller=${seller_link}`);
+        return Axios.get(`/bids/?seller=${seller_link}/`);
     }
 
     static updateBid(bid_link, updated_bid_obj){

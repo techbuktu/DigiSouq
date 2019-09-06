@@ -21,7 +21,7 @@ class NewProduct extends Component {
         this.onSubmit = this.onSubmit.bind(this)
     }
 
-    componentWillMount(){
+    componentDidMount(){
         let sellerLink = this.props.match.params.sellerLink;
         this.setState({sellerLink: `http://localhost:8000/api/sellers/${sellerLink}/`}, () => {
             console.log(`let sellerLink=${sellerLink} and this.state.sellerLink=${this.state.sellerLink}`)

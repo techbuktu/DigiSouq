@@ -22,7 +22,7 @@ class ProductBid extends Component {
         this.placeBid = this.placeBid.bind(this);
     }
 
-    componentWillMount(){
+    componentDidMount(){
         let product_link = this.props.match.params.productLink;
         this.setState({
             productLink: product_link,
