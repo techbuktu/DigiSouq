@@ -73,14 +73,14 @@ class App extends Component {
                   updateUser={this.updateUser}/>)} 
               />
               
-              <Route exact path="/buyers/:buyerLink" 
+              <Route exact path="/:buyerLink" 
                 render={props => 
                   (<BuyerHome {...props} 
                     userId={this.state.userId} 
                     is_authenticated={this.state.is_authenticated} 
                     updateUser={this.updateUser}/>)} 
               />
-              <Route path="/buyers/:buyerLink/bids" 
+              <Route path="/:buyerLink/bids" 
                 render={props => 
                   (<BidView {...props} 
                     userId={this.state.userId} 
