@@ -28,6 +28,10 @@ class ProductApi {
         return Axios.delete(`/products/${product_link}`);
     }
 
+    static getProductsByBidder(bidder_link){
+        return Axios.get(`/products/?buyer=${bidder_link}`);
+    }
+
     
 }
 
