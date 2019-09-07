@@ -1,4 +1,18 @@
 import Axios from './BaseApi';
+import axios from 'axios';
+
+
+const auth_token = localStorage.getItem('auth_token'); 
+
+let RequestHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': '*',
+    'content-type': 'application/json',
+    'Authorization': `Token ${auth_token}`
+}
+const axiosInstance = axios.create({
+    headers: RequestHeaders
+})
 
 
 class ProductApi {
@@ -22,6 +36,10 @@ class ProductApi {
 
     static getProductsBySeller(sellerLink){
         return Axios.get(`/products/?seller=${sellerLink}`);
+    }
+
+    static getProductByFullUrl(product_url){
+        return axiosInstance.get(`${product_url}`);
     }
 
     static deleteProduct(product_link){

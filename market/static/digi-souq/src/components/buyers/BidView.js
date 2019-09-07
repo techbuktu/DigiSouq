@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import BidApi from '../../api/BidApi';
 import BuyerApi from '../../api/BuyerApi';
+import ProductApi from '../../api/ProductApi';
 
 class BidView extends Component {
     constructor(props){
@@ -11,7 +12,8 @@ class BidView extends Component {
         this.state = {
             auth_token: token,
             buyer: {},
-            bidsByBuyer: []
+            bidsByBuyer: [],
+            bidProducts: []
         }
 
     }
@@ -23,7 +25,7 @@ class BidView extends Component {
             buyerLink: buyerLink
         }, () => {
             this.getBuyer(this.state.buyerLink);
-            //this.getBidsByBuyer(this.state.buyerLink);
+            //this.getBidProductsByFullUrls();
         })
         //this.getBuyer(buyerLink);
         
@@ -52,13 +54,29 @@ class BidView extends Component {
                 this.setState({
                     bidsByBuyer: bidsResponse.data
                 }, () => {
-                    console.log(`this.state.bidsByBuyer: ${this.state.bidsByBuyer[0]}`);
+                    console.log(`this.state.bidsByBuyer: ${this.state.bidsByBuyer}`);
+                    this.getBidProductsByFullUrls();
                 })
             })
             .catch(apiError => {
                 console.log(`getBidsByBuyer() API error: ${apiError}`);
             })
             .finally()
+    }
+
+    getBidProductsByFullUrls(){
+        let bidProducts = [];
+        this.state.bidsByBuyer.map((product_bid) => {
+            ProductApi.getProductByFullUrl(product_bid.product)
+                .then(res => { 
+                    bidProducts.push(res.data);
+                    this.setState({
+                        bidProducts: bidProducts
+                    }, () => { console.log(`this.state.bidProducts: ${this.state.bidProducts}`)});
+                })
+                .catch(err => console.log(`getBidProductsByFullUrls(): ${err}`))
+                .finally()
+        })
     }
 
 
@@ -68,10 +86,10 @@ class BidView extends Component {
                 <div>
                     <h4>BidView: Your List of Most Recent Bids</h4>
                     
-                    {this.state.bidsByBuyer.map((bid) => {
+                    {this.state.bidProducts.map((product) => {
                         return(
-                            <p key={bid.pk}>
-                                Product: {bid.product} Bid Amount: ${bid.amount}
+                            <p key={product.link}>
+                                Product: {product.name} Bid Amount: ${product.price}
                             </p>
                         )
                     })}

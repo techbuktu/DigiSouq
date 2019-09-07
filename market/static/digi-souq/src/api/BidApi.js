@@ -5,8 +5,9 @@ class BidApi {
         return Axios.get(`/bids/`);
     }
     static getBidsByBuyer(buyer_link){
-        return Axios.get(`http://localhost:8000/api/bids/?buyer=${buyer_link}`);
+        return Axios.get(`/bids/?buyer=${buyer_link}`);
     }
+
 
     static placeBid(bid_obj){
         return Axios.post(`/bids/`, bid_obj);

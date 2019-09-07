@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import ProductApi from '../../api/ProductApi';
 import BidApi from '../../api/BidApi';
+import UserApi from '../../api/UserApi';
 
 class ProductBid extends Component {
     constructor(props){
@@ -14,6 +15,7 @@ class ProductBid extends Component {
             productLink: '',
             fullProductLink: '',
             product: {},
+            buyerUrl: '',
             productBid : {},
             productBidJson: ''
         }
@@ -29,8 +31,19 @@ class ProductBid extends Component {
             fullProductLink: `http://localhost:8000/api/products/${product_link}/`
         }, () => {
             this.getProduct();
-        })
+        });
+        this.getAuthUser();
         
+    }
+
+    getAuthUser(){
+        let userId = localStorage.getItem('userId');
+        UserApi.getUser(userId)
+            .then(userResponse => {
+                this.setState({ buyerUrl: userResponse.data.buyer}, () => {})
+            })
+            .catch(apiError => console.log(`getAuthUser() Api Error: ${apiError}`))
+            .finally()
     }
 
     getProduct(){
@@ -51,7 +64,7 @@ class ProductBid extends Component {
     onChange(e){
         let productBid = {
             accepted: false,
-            buyer: 'http://localhost:8000/api/buyers/myuser/',
+            buyer: this.state.buyerUrl,
             product: this.state.fullProductLink
         };
         this.setState({ [e.target.name]: e.target.value}, () => {

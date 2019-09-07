@@ -130,6 +130,7 @@ class ProductDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+
 class BidListView(generics.ListCreateAPIView):
     """
     Makes GET (all) and POST requests against the root Bid API.
