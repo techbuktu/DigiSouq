@@ -73,7 +73,7 @@ class App extends Component {
                   updateUser={this.updateUser}/>)} 
               />
               
-              <Route exact path="/:buyerLink" 
+              <Route path="/buyers/:buyerLink" 
                 render={props => 
                   (<BuyerHome {...props} 
                     userId={this.state.userId} 
@@ -87,7 +87,7 @@ class App extends Component {
                     is_authenticated={this.state.is_authenticated} 
                     updateUser={this.updateUser}/>)} 
               />
-              <Route exact path="/products/" 
+              <Route exact path="/products" 
                 render={props => 
                   (<ProductList {...props} 
                     userId={this.state.userId} 

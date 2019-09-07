@@ -12,9 +12,6 @@ const axiosInstance = axios.create({
 })
 
 class UserApi {
-    constructor(){
-        
-    }
     
     static getUser(pk){
         return Axios.get(`/users/${pk}`);

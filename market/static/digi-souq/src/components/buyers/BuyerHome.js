@@ -57,14 +57,11 @@ class BuyerHome extends Component {
                     </p>
                 </div>
             )
-        }
-        else {
+        } else {
             return (
-                <div>
-                    <p>
-                        {this.state.unauth_message}
-                    </p>
-                </div>
+                <React.Fragment>
+                    {this.state.unauth_message}
+                </React.Fragment>
             )
         }
 

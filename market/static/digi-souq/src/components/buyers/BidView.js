@@ -18,15 +18,24 @@ class BidView extends Component {
 
 
     componentDidMount(){
-        this.getBuyer();
+        let buyerLink = this.props.match.params.buyerLink;
+        this.setState({
+            buyerLink: buyerLink
+        }, () => {
+            this.getBuyer(this.state.buyerLink);
+            //this.getBidsByBuyer(this.state.buyerLink);
+        })
+        //this.getBuyer(buyerLink);
+        
     }
 
-    getBuyer(){
-        BuyerApi.getBuyerDetails('this.buyer.link')
+    getBuyer(buyer_link){
+        BuyerApi.getBuyerDetails(buyer_link)
             .then(response => {
                 this.setState({
                     buyer: response.data
                 }, () => {
+                    console.log(`this.state.buyer: ${this.state.buyer.link}`);
                     this.getBidsByBuyer();
                 })
             })
@@ -37,12 +46,13 @@ class BidView extends Component {
     }
 
     getBidsByBuyer(){
-        BidApi.getBidsByBuyer(this.state.buyer.link)
+        //BidApi.getAllBids() getBidsByBuyer
+        BidApi.getBidsByBuyer(this.state.buyerLink)
             .then(bidsResponse => {
                 this.setState({
                     bidsByBuyer: bidsResponse.data
                 }, () => {
-                    console.log(`this.bidsByBuyer: ${this.state.bidsByBuyer}`);
+                    console.log(`this.state.bidsByBuyer: ${this.state.bidsByBuyer[0]}`);
                 })
             })
             .catch(apiError => {
@@ -53,10 +63,18 @@ class BidView extends Component {
 
 
     render() {
-        if(this.state.auth_token){
+        if(this.state.auth_token && this.state.bidsByBuyer){
             return (
                 <div>
-                    <h4>Bid View: Your List of Most Recent Bids</h4>
+                    <h4>BidView: Your List of Most Recent Bids</h4>
+                    
+                    {this.state.bidsByBuyer.map((bid) => {
+                        return(
+                            <p key={bid.pk}>
+                                Product: {bid.product} Bid Amount: ${bid.amount}
+                            </p>
+                        )
+                    })}
                 </div>
             )
             }
