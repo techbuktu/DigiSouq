@@ -13,6 +13,7 @@ class BidView extends Component {
             auth_token: token,
             buyer: {},
             bidsByBuyer: [],
+            products: [],
             bidProducts: []
         }
 
@@ -66,33 +67,77 @@ class BidView extends Component {
 
     getBidProductsByFullUrls(){
         let bidProducts = [];
-        this.state.bidsByBuyer.map((product_bid) => {
-            ProductApi.getProductByFullUrl(product_bid.product)
+        let products = [];
+        this.state.bidsByBuyer.map((bid) => {
+            let bidProduct = {};
+            bidProduct["bid"] = bid;
+            ProductApi.getProductByFullUrl(bid.product)
                 .then(res => { 
-                    bidProducts.push(res.data);
+                    products.push(res.data);
+                    bidProduct["product"] = res.data;
+                    bidProducts.push(bidProduct);
                     this.setState({
+                        products: products,
                         bidProducts: bidProducts
-                    }, () => { console.log(`this.state.bidProducts: ${this.state.bidProducts}`)});
+                    }, () => { 
+                        console.log(`this.state.products: ${this.state.products}`);
+                        console.log(`this.state.bidProducts: ${this.state.bidProducts}`);
+                    });
                 })
                 .catch(err => console.log(`getBidProductsByFullUrls(): ${err}`))
                 .finally()
         })
     }
 
+    acceptedStyle(bidProduct){
+        if(bidProduct.bid.accepted){
+            return { backgroundColor: 'green', padding: '5%' }
+        } else {
+            return { backgroundColor: 'red', padding: '5%' }
+        }
+    };
 
     render() {
         if(this.state.auth_token && this.state.bidsByBuyer){
             return (
                 <div>
                     <h4>BidView: Your List of Most Recent Bids</h4>
+                        <table>
+                            <th>
+                                Product Name 
+                            </th>
+                            <th>
+                                Original Price
+                            </th>
+                            <th>
+                                Your Bid ($)
+                            </th>
+                            <th>
+                                Accepted? 
+                            </th>
+
+                            {this.state.bidProducts.map((bidProduct) => {
+                                return <React.Fragment>
+                                    <tr>
+                                        <td>
+                                            <Link to={`/products/${bidProduct.product.link}`}> {bidProduct.product.name} </Link>
+                                        </td>
+                                        <td>
+                                            ${bidProduct.product.price}
+                                        </td>
+                                        <td>
+                                            ${bidProduct.bid.amount}
+                                        </td>
+                                        <td>
+                                            <button style={this.acceptedStyle(bidProduct)}></button>
+                                        </td>
+                                        
+                                    </tr>
+                                </React.Fragment>
+                            })}
+                           
+                        </table>
                     
-                    {this.state.bidProducts.map((product) => {
-                        return(
-                            <p key={product.link}>
-                                Product: {product.name} Bid Amount: ${product.price}
-                            </p>
-                        )
-                    })}
                 </div>
             )
             }
