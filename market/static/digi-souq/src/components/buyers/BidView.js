@@ -3,6 +3,7 @@ import {Redirect, Link} from 'react-router-dom';
 import BidApi from '../../api/BidApi';
 import BuyerApi from '../../api/BuyerApi';
 import ProductApi from '../../api/ProductApi';
+import SellerApi from '../../api/SellerApi';
 
 class BidView extends Component {
     constructor(props){
@@ -16,7 +17,7 @@ class BidView extends Component {
             products: [],
             bidProducts: []
         }
-
+        
     }
 
 
@@ -115,7 +116,6 @@ class BidView extends Component {
                             <th>
                                 Accepted? 
                             </th>
-
                             {this.state.bidProducts.map((bidProduct) => {
                                 return <React.Fragment>
                                     <tr>

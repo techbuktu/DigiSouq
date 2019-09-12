@@ -8,11 +8,30 @@ class BidBoard extends Component {
 
         let token = localStorage.getItem('auth_token');
         this.state = {
-            auth_token: token
+            auth_token: token,
+            seller: {},
+            productBids : [],
+            sellerProducts: [],
+
         }
     }
 
+    componentDidMount(){
+        this.getSellerInfo();
+    }
+
+    getSellerInfo(){
+        return;
+    }
+
+    getSellerProducts(){
+        return [];
+    }
     
+    getProductBidsByFullUrls(){
+        
+    }
+
     render() {
         if(this.state.auth_token){
             return (
