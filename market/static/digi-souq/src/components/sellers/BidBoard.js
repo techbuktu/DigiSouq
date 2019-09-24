@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Redirect, Link} from 'react-router-dom';
 import BidApi from '../../api/BidApi';
+import SellerApi from '../../api/SellerApi';
+import ProductApi from '../../api/ProductApi';
 
 class BidBoard extends Component {
     constructor(props){
@@ -12,24 +14,68 @@ class BidBoard extends Component {
             seller: {},
             productBids : [],
             sellerProducts: [],
-
+            sellerLink: ''
         }
     }
 
     componentDidMount(){
-        this.getSellerInfo();
+        let sellerLink = this.props.match.params.sellerLink;
+        this.setState({ sellerLink: sellerLink}, () => {
+            this.getSellerInfo(this.state.sellerLink);
+        })
     }
 
-    getSellerInfo(){
-        return;
+    getSellerInfo(sellerLink){
+        SellerApi.getSeller(sellerLink)
+            .then(response => {
+                this.setState({seller: response.data}, () => {
+                    console.log(`this.state.seller: ${this.state.seller.link}`);
+                    this.getProductsBySeller();
+                })
+            })
+            .catch(err => {
+                console.log(`getSeller() API Error: ${err}`);
+            })
+            .finally()
     }
 
-    getSellerProducts(){
-        return [];
+    getProductsBySeller(){
+        const productBids = [];
+        ProductApi.getProductsBySeller(this.state.sellerLink)
+            .then(productsResponse => {
+                this.setState({sellerProducts: productsResponse.data}, () => {
+                    console.log(`productsResponse: ${productsResponse}`);
+                    console.log(`this.state.sellerProducts: ${this.state.sellerProducts.length}`);
+                    this.state.sellerProducts.map(product => {
+                        const productBid = {};
+                        productBid["product"] = product;
+                        productBid["bids"] = [];
+                        productBids.push(productBid);
+                        //this.getBidsforProductByFullUrl();
+                        product.bids.map(bid => {
+                            const bidDetail = {};
+                            BidApi.getBidByFullUrl(bid)
+                                .then(bidResponse => {
+                                    productBid.bids.push(bidResponse);
+                                })
+                                .catch()
+                        });
+                        productBids.push(productBid);
+                        this.setState({ productBids: productBids }, () => {
+                            console.log(`this.state.productBids.length: ${this.state.productBids.length}`);
+                        });
+                    })
+                });
+            })
+            .catch()
+            .finally()
     }
     
-    getProductBidsByFullUrls(){
-        
+    getBidByFullUrl(bid_full_url){
+        BidApi.getBidByFullUrl(bid_full_url)
+            .then()
+            .catch()
+            .finally()
     }
 
     render() {
