@@ -53,16 +53,7 @@ class BidBoard extends Component {
                         productBid["product"] = product;
                         productBid["bids"] = [];
 
-                        product.bids.map(bid => {
-                            let bidDetail = {};
-                            BidApi.getBidByFullUrl(bid)
-                                .then(bidResponse => {
-                                    bidDetail = bidResponse.data;
-                                    productBid.bids.push(bidDetail);
-                                    console.log(`New bidDetail: ${bidDetail.amount}; ${productBid.bids.length}`);
-                                })
-                                .catch(err => console.log(`getBidByFullUrl() API Error: ${err}`));
-                        });
+                        //getproductBiddetail
                         productBids.push(productBid);
                         this.setState({ productBids: productBids }, () => {
                             console.log(`this.state.productBids.length: ${this.state.productBids.length}`);
