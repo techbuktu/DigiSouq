@@ -4,6 +4,8 @@ import BidApi from '../../api/BidApi';
 import SellerApi from '../../api/SellerApi';
 import ProductApi from '../../api/ProductApi';
 
+import ProductBidDetail from '../sellers/ProductBidDetail';
+
 class BidBoard extends Component {
     constructor(props){
         super(props);
@@ -40,14 +42,14 @@ class BidBoard extends Component {
     }
 
     getProductsBySeller(){
-        const productBids = [];
+        let productBids = [];
         ProductApi.getProductsBySeller(this.state.sellerLink)
             .then(productsResponse => {
                 this.setState({sellerProducts: productsResponse.data}, () => {
                     console.log(`productsResponse: ${productsResponse}`);
                     console.log(`this.state.sellerProducts: ${this.state.sellerProducts.length}`);
                     this.state.sellerProducts.map(product => {
-                        const productBid = {};
+                        let productBid = {};
                         productBid["product"] = product;
                         productBid["bids"] = [];
 
@@ -57,8 +59,9 @@ class BidBoard extends Component {
                                 .then(bidResponse => {
                                     bidDetail = bidResponse.data;
                                     productBid.bids.push(bidDetail);
+                                    console.log(`New bidDetail: ${bidDetail.amount}; ${productBid.bids.length}`);
                                 })
-                                .catch()
+                                .catch(err => console.log(`getBidByFullUrl() API Error: ${err}`));
                         });
                         productBids.push(productBid);
                         this.setState({ productBids: productBids }, () => {
@@ -77,17 +80,7 @@ class BidBoard extends Component {
                 <div>
                     Seller view and accept bid for your Products.
                     {this.state.productBids.map(productBid => {
-                        return <React.Fragment>
-                            <h4>{productBid.product.name}: {productBid.product.price}</h4>
-                            Bids for this Product 
-                            {productBid.bids.map(bid => {
-                                return (
-                                    <React.Fragment>
-                                         <span> Salaam! {productBid.product.name} Amount: ${bid.amount} </span>
-                                    </React.Fragment>
-                                )
-                            })}
-                        </React.Fragment>
+                        return <ProductBidDetail key={productBid.product.link} productBid={productBid}/>
                     })}
                 </div>
 
