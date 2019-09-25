@@ -70,20 +70,27 @@ class BidBoard extends Component {
             .catch()
             .finally()
     }
-    
-    getBidByFullUrl(bid_full_url){
-        BidApi.getBidByFullUrl(bid_full_url)
-            .then()
-            .catch()
-            .finally()
-    }
 
     render() {
-        if(this.state.auth_token){
+        if(this.state.auth_token && this.state.productBids){
             return (
                 <div>
                     Seller view and accept bid for your Products.
+                    {this.state.productBids.map(productBid => {
+                        return <React.Fragment>
+                            <h4>{productBid.product.name}: {productBid.product.price}</h4>
+                            Bids for this Product 
+                            {productBid.bids.map(bid => {
+                                return (
+                                    <React.Fragment>
+                                         <span> Salaam! {productBid.product.name} Amount: ${bid.amount} </span>
+                                    </React.Fragment>
+                                )
+                            })}
+                        </React.Fragment>
+                    })}
                 </div>
+
             )
         }
         else {
