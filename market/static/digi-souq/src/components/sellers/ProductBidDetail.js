@@ -57,7 +57,7 @@ class ProductBidDetail extends Component {
             } else {
                 return (
                 <p>
-                    {bid.amount} <button onClick={this.acceptBid(bid.pk)}>Accept Bid</button>
+                    {bid.amount} <button onClick={this.acceptBid.bind(this, bid.pk)}>Accept Bid</button>
                 </p>
                 )
             }
