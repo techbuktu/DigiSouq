@@ -50,13 +50,13 @@ class BidBoard extends Component {
                         const productBid = {};
                         productBid["product"] = product;
                         productBid["bids"] = [];
-                        productBids.push(productBid);
-                        //this.getBidsforProductByFullUrl();
+
                         product.bids.map(bid => {
-                            const bidDetail = {};
+                            let bidDetail = {};
                             BidApi.getBidByFullUrl(bid)
                                 .then(bidResponse => {
-                                    productBid.bids.push(bidResponse);
+                                    bidDetail = bidResponse.data;
+                                    productBid.bids.push(bidDetail);
                                 })
                                 .catch()
                         });
