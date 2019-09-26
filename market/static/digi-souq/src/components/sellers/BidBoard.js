@@ -16,8 +16,10 @@ class BidBoard extends Component {
             seller: {},
             productBids : [],
             sellerProducts: [],
-            sellerLink: ''
+            sellerLink: '',
+            hasChanged : false
         }
+
     }
 
     componentDidMount(){
@@ -71,7 +73,7 @@ class BidBoard extends Component {
                 <div>
                     Seller view and accept bid for your Products.
                     {this.state.productBids.map(productBid => {
-                        return <ProductBidDetail key={productBid.product.link} productBid={productBid}/>
+                        return <ProductBidDetail key={productBid.product.link} productBid={productBid} />
                     })}
                 </div>
 

@@ -26,13 +26,10 @@ class ProductBidDetail extends Component {
                     bidDetail = bidResponse.data;
                     bidsOnProduct.push(bidDetail);
                     this.setState({}, ()=>{})
-                    console.log(`New bidDetail: ${bidDetail.amount}; bidsOnProduct: ${bidsOnProduct.length}`);
                 })
                 .catch(err => console.log(`getBidByFullUrl() API Error: ${err}`));
         });
-        this.setState({ bids: bidsOnProduct}, () => {
-            console.log(`bidsOnProduct: ${this.state.bids.length}`);
-        })
+        this.setState({ bids: bidsOnProduct}, () => {})
     }
 
     acceptBid(bid_id){
@@ -43,12 +40,12 @@ class ProductBidDetail extends Component {
                 console.log(`${bidResponse.data}`);
             })
             .catch(err => console.log(`${err}`))
-            .finally(() => console.log(`BidApi.updateBid() done running...`));
+            .finally(() => {
+            })
     }
     
     render() {
         const {product, bids} = this.props.productBid;
-        console.log(`# of bids for ${product.name}: ${product.bids.length}`);
         const bidsUI = this.state.bids.map(bid => {
             if(bid.accepted){
                 return <p>
