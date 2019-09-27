@@ -34,6 +34,8 @@ I applied some modularity to the structure of the frontend (`digi-souq/src/`) ap
 
 * Every API Service is created as a class in its own file. Each individual API class would have a `static` method to handle each type of CRUD functionality (including filtered requests.)
 
+* Routing is implemented using the popular `[react-router-dom]`(https://www.npmjs.com/package/react-router-dom)
+
 * No consideration is given to styling in the frontend. But you can easily install and use either `reactstrap` or `Material Design Lite` to handle the RWD needs and make the app a bit more attractive than the current barebones UI.
 
 Installations
@@ -90,7 +92,7 @@ Your frontend (React-based) app should now be live and accessible on `localhost:
 ## Caveat Emptor 
 * This project is made available "as-is" with no warranties or guaranties whatsoever.
 * Don't "copy-and-paste" this project into an existing one without significantly modifying it.
-* If you model you project after this, please, consider adding more functionality and writing some tests
+* If you model your project after this one, please, consider adding more functionality and writing some tests
 * Consider making this project more secure (using Web App security best practices) before adapting it for practical use.
 
 ## On Further Development
