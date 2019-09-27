@@ -102,7 +102,7 @@ To improve the backend (Django) project, consider:
 
 * Using JWT for all-round authentication instead of DRF's TokenAuthentication implementation. See [DRF-SimpleJWT](https://github.com/davesque/django-rest-framework-simplejwt) for a viable option.
 
-* Writing both backend and frontend functional and unit tests. For a detailed coverage of TDD in Python, see Harry Percival's ["Test-Driven Development with Python"](http://www.obeythetestinggoat.com/) book. (It's actually a tour of Web Development best practices and practical walkthroughs from your first line of code to settings up a CI/CD system. I **highly recommend** this book.)
+* Writing both backend and frontend functional and unit tests. For a detailed coverage of TDD in Python, see Harry Percival's ["Test-Driven Development with Python"](http://www.obeythetestinggoat.com/) book. (This book is more than just a coverage of TDD in Python. It's actually a tour of Web Development best practices and practical walkthroughs from your first line of code to settings up a CI/CD system. I **highly recommend** this book.)
 
 ### The Frontend: 
 You can improve the React frontend app by:
@@ -114,7 +114,7 @@ You can improve the React frontend app by:
 I am online (on Social Media) and on my own websites. Here's where and how to get in touch with me.
 
 ### Social Media:
-I can be reached, connected or, be-friended or follow on:
+I can be reached, connected with, be-friended or followed on:
 * [LinkedIn](https://linkedin.com/in/muhammadjalloh)
 * [Twitter](https://twitter.com/techbuktu)
 * [GitHub](https://github.com/techbuktu)
