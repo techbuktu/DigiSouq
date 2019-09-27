@@ -94,13 +94,27 @@ Your frontend (React-based) app should now be live and accessible on `localhost:
 * Consider making this project more secure (using Web App security best practices) before adapting it for practical use.
 
 ## On Further Development
-### Backend: JWT Auth, pgSQL as DB, etc., Testing with unittest and Selenium for Frontend testing; Link to TDD book
 
-### Backend: State Management with Redux; UI design/RWD (MDL, BS4), Reactstrap, etc.
+### The Backend: 
+To improve the backend (Django) project, consider:
+
+* Using [PostgreSQL](https://www.postgresql.org/) instead of SQLite as your database of choice.
+
+* Using JWT for all-round authentication instead of DRF's TokenAuthentication implementation. See [DRF-SimpleJWT](https://github.com/davesque/django-rest-framework-simplejwt) for a viable option.
+
+* Writing both backend and frontend functional and unit tests. For a detailed coverage of TDD in Python, see Harry Percival's ["Test-Driven Development with Python"](http://www.obeythetestinggoat.com/) book. (It's actually a tour of Web Development best practices and practical walkthroughs from your first line of code to settings up a CI/CD system. I **highly recommend** this book.)
+
+### The Frontend: 
+You can improve the React frontend app by:
+* Using [Redux](https://react-redux.js.org/) as a state manager to handle all your data centrally instead of the component `state`.
+
+* Improve the UI using [Material Design Lite](https://getmdl.io/) or [Reactstrap](https://reactstrap.github.io/) 
 
 ## Contact Me:
+I am online (on Social Media) and on my own websites. Here's where and how to get in touch with me.
+
 ### Social Media:
-I am online and can be reached, connected or, be-friended or follow on:
+I can be reached, connected or, be-friended or follow on:
 * [LinkedIn](https://linkedin.com/in/muhammadjalloh)
 * [Twitter](https://twitter.com/techbuktu)
 * [GitHub](https://github.com/techbuktu)
@@ -110,4 +124,5 @@ I have a few websites online, but most relevant here are:
 * [TechBuktu](https://techbuktu.com) (I publish some web dev tutorials here every once in a while.)
 * [Siratiq: Interactive Mapping Platform](https://siratiq.com) (This is a work-in-progress platform that lets you create, share and discover photos, blog posts, notes and videos parlayed on a personal map. Other features are forthcoming, God willing! :) )
 
-**If you are reading this, I am currently looking for a Software Development role that enables me to work with Python and/or JavaScript (on the backend) and React.js or Angular on the frontend. I prefer either a position local to Chicago, IL or remote. If you have something that fits what I am looking for, please, send me a message via LinkedIn https://linkedin.com/in/muhammadjalloh and we will take it from there! :) **
+### I am Looking for a Full Stack Role
+If you are reading this, I am currently looking for a Software Development role that enables me to work with Python and/or JavaScript (on the backend) and React.js or Angular on the frontend. I prefer either a position local to Chicago, IL or remote. If you have something that fits what I am looking for, please, send me a message via LinkedIn **https://linkedin.com/in/muhammadjalloh** and we will take it from there! :) 
